@@ -1,0 +1,58 @@
+{
+    "name": "topshelfcraft/wordsmith",
+    "description": "...because you have the best words.",
+    "type": "craft-plugin",
+    "version": "3.0.1",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "wordsmith"
+    ],
+    "support": {
+        "docs": "https://github.com/topshelfcraft/wordsmith/blob/master/README.md",
+        "issues": "https://github.com/topshelfcraft/wordsmith/issues"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Michael Rog",
+            "homepage": "https://topshelfcraft.com"
+        }
+    ],
+    "require": {
+        "danielstjules/stringy": "~3.1.0",
+        "mofodojodino/profanity-filter": "^1.3",
+        "tcb13/substringy": "^1.0",
+        "davechild/textstatistics": "^1.0",
+        "icanboogie/inflector": "^1.4",
+        "erusev/parsedown-extra": "^0.7.1",
+        "mundschenk-at/php-typography": "^6.0"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+          "topshelfcraft\\wordsmith\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "Wordsmith",
+        "handle": "wordsmith",
+        "schemaVersion": "0.0.0.0",
+        "hasCpSettings": false,
+        "hasCpSection": false,
+        "changelogUrl": "https://raw.githubusercontent.com/topshelfcraft/wordsmith/master/CHANGELOG.md",
+        "components": {
+            "emoji": "topshelfcraft\\wordsmith\\services\\EmojiService",
+            "smith": "topshelfcraft\\wordsmith\\services\\WordsmithService",
+            "typography": "topshelfcraft\\wordsmith\\services\\TypographyService"
+        },
+        "class": "topshelfcraft\\wordsmith\\Wordsmith"
+    }
+}
