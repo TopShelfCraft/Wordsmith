@@ -2,7 +2,7 @@
     "name": "topshelfcraft/wordsmith",
     "description": "...because you have the best words.",
     "type": "craft-plugin",
-    "version": "3.0.1",
+    "version": "3.0.2",
     "keywords": [
         "craft",
         "cms",
@@ -11,7 +11,7 @@
         "wordsmith"
     ],
     "support": {
-        "docs": "https://github.com/topshelfcraft/wordsmith/blob/master/README.md",
+        "docs": "https://wordsmith.docs.topshelfcraft.com/",
         "issues": "https://github.com/topshelfcraft/wordsmith/issues"
     },
     "license": "MIT",
