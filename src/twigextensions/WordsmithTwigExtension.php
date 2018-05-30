@@ -22,7 +22,7 @@ use Twig_Function;
  * @package Wordsmith
  * @since 3.0.0
  */
-class WordsmithTwigExtension extends \Twig_Extension
+class WordsmithTwigExtension extends \Twig_Extension implements \Twig_Extension_GlobalsInterface
 {
 
 
@@ -53,18 +53,16 @@ class WordsmithTwigExtension extends \Twig_Extension
     public function getFilters()
     {
 
-		$smith = Wordsmith::$plugin->smith;
-		$prefix = Wordsmith::$plugin->getSettings()->twigPrefix;
+        $smith = Wordsmith::$plugin->smith;
+        $prefix = Wordsmith::$plugin->getSettings()->twigPrefix;
 
-		$filters = [];
+        $filters = [];
 
-		foreach ($smith->getMethodList() as $method => $meta)
-		{
-			$filters[] = new Twig_Filter($prefix.$method, [$smith, $method], $meta);
-		}
+        foreach ($smith->getMethodList() as $method => $meta) {
+            $filters[] = new Twig_Filter($prefix.$method, [$smith, $method], $meta);
+        }
 
-		return $filters;
-
+        return $filters;
     }
 
 
@@ -78,27 +76,23 @@ class WordsmithTwigExtension extends \Twig_Extension
     public function getFunctions()
     {
 
-    	$smith = Wordsmith::$plugin->smith;
-    	$prefix = Wordsmith::$plugin->getSettings()->twigPrefix;
+        $smith = Wordsmith::$plugin->smith;
+        $prefix = Wordsmith::$plugin->getSettings()->twigPrefix;
 
-    	$functions = [];
+        $functions = [];
 
-    	foreach ($smith->getMethodList() as $method => $meta)
-		{
-			$functions[] = new Twig_Function($prefix.$method, [$smith, $method], $meta);
-		}
+        foreach ($smith->getMethodList() as $method => $meta) {
+            $functions[] = new Twig_Function($prefix.$method, [$smith, $method], $meta);
+        }
 
         return $functions;
-
     }
 
-
-	/*
-	 * Private methods
-	 * ===========================================================================
-	 */
-
-
-
-
+    /**
+     * @inheritdoc
+     */
+    public function getGlobals()
+    {
+        return ['wordsmith' => Wordsmith::$plugin->smith];
+    }
 }

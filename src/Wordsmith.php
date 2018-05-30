@@ -38,7 +38,6 @@ use yii\base\Event;
  */
 class Wordsmith extends Plugin
 {
-
     /*
      * Static properties
      * ===========================================================================
@@ -57,14 +56,15 @@ class Wordsmith extends Plugin
      * ===========================================================================
      */
 
+    /**
+     * @inheritdoc
+     */
     public function init()
     {
-
         parent::init();
         self::$plugin = $this;
 
-        Craft::$app->getView()->getTwig()->addExtension(new WordsmithTwigExtension());
-        Craft::$app->getView()->getTwig()->addGlobal('wordsmith', Wordsmith::$plugin->smith);
+        Craft::$app->getView()->registerTwigExtension(new WordsmithTwigExtension());
 
         // For folks coming from Craft 2.x, we'll provide our methods under a `{{ craft.wordsmith }}` variable
         Event::on(
@@ -79,16 +79,18 @@ class Wordsmith extends Plugin
 
     }
 
-	/**
-	 * Creates and returns the model used to store the plugin’s settings.
-	 *
-	 * @return Settings|null
-	 */
-	protected function createSettingsModel()
-	{
-		return new Settings();
-	}
+    /*
+     * Protected methods
+     * ===========================================================================
+     */
 
-
-
+    /**
+     * Creates and returns the model used to store the plugin’s settings.
+     *
+     * @return Settings|null
+     */
+    protected function createSettingsModel()
+    {
+        return new Settings();
+    }
 }

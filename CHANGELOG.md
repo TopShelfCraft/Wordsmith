@@ -6,6 +6,11 @@ The format of this changelog is based on ["Keep a Changelog"](http://keepachange
 
 This project adheres to [Semantic Versioning](http://semver.org/). Version numbers follow the pattern: `MAJOR.FEATURE.BUILD`
 
+## Unreleased
+
+### Fixed
+
+- Fixed some PHP errors that could occur when installed with other Craft plugins.
 
 ## 3.0.1 - 2017-11-11
 
