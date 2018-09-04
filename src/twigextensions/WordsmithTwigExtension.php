@@ -22,7 +22,7 @@ use Twig_Function;
  * @package Wordsmith
  * @since 3.0.0
  */
-class WordsmithTwigExtension extends \Twig_Extension
+class WordsmithTwigExtension extends \Twig_Extension implements \Twig_Extension_GlobalsInterface
 {
 
 
@@ -89,16 +89,14 @@ class WordsmithTwigExtension extends \Twig_Extension
 		}
 
         return $functions;
-
     }
 
-
-	/*
-	 * Private methods
-	 * ===========================================================================
-	 */
-
-
-
-
+    /**
+     * @inheritdoc
+     */
+    public function getGlobals()
+    {
+        return ['wordsmith' => Wordsmith::$plugin->smith];
+    }
+    
 }
