@@ -78,17 +78,18 @@ class WordsmithTwigExtension extends \Twig_Extension implements \Twig_Extension_
     public function getFunctions()
     {
 
-    	$smith = Wordsmith::$plugin->smith;
-    	$prefix = Wordsmith::$plugin->getSettings()->twigPrefix;
+		$smith = Wordsmith::$plugin->smith;
+		$prefix = Wordsmith::$plugin->getSettings()->twigPrefix;
 
-    	$functions = [];
+		$functions = [];
 
-    	foreach ($smith->getMethodList() as $method => $meta)
+		foreach ($smith->getMethodList() as $method => $meta)
 		{
 			$functions[] = new Twig_Function($prefix.$method, [$smith, $method], $meta);
 		}
 
         return $functions;
+
     }
 
     /**
@@ -98,5 +99,5 @@ class WordsmithTwigExtension extends \Twig_Extension implements \Twig_Extension_
     {
         return ['wordsmith' => Wordsmith::$plugin->smith];
     }
-    
+
 }
