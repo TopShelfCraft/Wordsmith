@@ -85,7 +85,7 @@ class Hacksaw
 			$paragraphs = array_filter(explode("<p>", str_replace("</p>", "", $cleanContent)));
 			$paragraphs = array_slice($paragraphs, 0, $limit);
 			$paragraphsCount = count($paragraphs)-1;
-			$return = "<p>";
+			$return = "";
 			foreach ($paragraphs as $key => $paragraph)
 			{
 				$return .= "<p>" . $paragraph;
