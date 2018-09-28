@@ -72,7 +72,8 @@ class TypographyService extends Component
 
 			if (is_array($settings)) {
 				foreach ($settings as $key => $value) {
-					$this->_typographySettings->{$key}($value);
+					$func = "set_{$key}";
+					$this->_typographySettings->$func($value);
 				}
 			}
 
@@ -93,7 +94,8 @@ class TypographyService extends Component
 
 		if (is_array($adhocSettings)) {
 			foreach ($adhocSettings as $key => $value) {
-				$settings->{$key}($value);
+				$func = "set_{$key}";
+				$settings->$func($value);
 			}
 		}
 
