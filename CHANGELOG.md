@@ -7,6 +7,13 @@ The format of this changelog is based on ["Keep a Changelog"](http://keepachange
 This project adheres to [Semantic Versioning](http://semver.org/). Version numbers follow the pattern: `MAJOR.FEATURE.BUILD`
 
 
+## 3.0.4 - 2018-11-05
+
+### Fixed
+
+- Added legacy parameters to the `hacksaw()` method for better backwards compatibility. ([#2](https://github.com/TopShelfCraft/Wordsmith/issues/2))
+
+
 ## 3.0.3 - 2018-09-04
 
 ### Changed
