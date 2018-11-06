@@ -572,21 +572,31 @@ class WordsmithService extends Component
 	 */
 	public function hacksaw($s, $unit = 'p', $limit = 1, $allowedTags = null, $append = null, $hack = null, $allow = null, $chars = null, $chars_start = null, $words = null) : string
 	{
-		if ($hack !== null) {
+		if ($hack !== null)
+		{
 			$unit = $hack;
 		}
-		if ($allow !== null) {
+		
+		if ($allow !== null)
+		{
 			$allowedTags = $allow;
 		}
-		if ($chars !== null) {
+		
+		if ($chars !== null)
+		{
+			
 			$unit = 'c';
 			$limit = $chars;
 			
-			if ($chars_start !== null) {
+			if ($chars_start !== null)
+			{
 				$s = mb_substr($s, $chars_start);
 			}
+			
 		}
-		if ($words !== null) {
+		
+		if ($words !== null)
+		{
 			$unit = 'w';
 			$limit = $words;
 		}
