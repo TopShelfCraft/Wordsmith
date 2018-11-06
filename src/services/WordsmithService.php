@@ -555,18 +555,52 @@ class WordsmithService extends Component
 	/**
 	 * Alias for `chop()`
 	 *
-	 * Uses a slightly different parameter order than the `chop` method's signature, in order to provide
-	 * backwards compatibility with the old Hacksaw plugin.
+	 * Provides additional parameters beyond the `chop` method in order to provide
+	 * backwards compatibility with the old Hacksaw plugins.
 	 *
 	 * @param $s
 	 * @param string $unit
 	 * @param int $limit
 	 * @param null $allowedTags
 	 * @param null $append
+	 * @param null $hack
+	 * @param null $allow
+	 * @param null $chars
+	 * @param null $chars_start
+	 * @param null $words
 	 * @return string
 	 */
-	public function hacksaw($s, $unit = 'p', $limit = 1, $allowedTags = null, $append = null) : string
+	public function hacksaw($s, $unit = 'p', $limit = 1, $allowedTags = null, $append = null, $hack = null, $allow = null, $chars = null, $chars_start = null, $words = null) : string
 	{
+		if ($hack !== null)
+		{
+			$unit = $hack;
+		}
+		
+		if ($allow !== null)
+		{
+			$allowedTags = $allow;
+		}
+		
+		if ($chars !== null)
+		{
+			
+			$unit = 'c';
+			$limit = $chars;
+			
+			if ($chars_start !== null)
+			{
+				$s = mb_substr($s, $chars_start);
+			}
+			
+		}
+		
+		if ($words !== null)
+		{
+			$unit = 'w';
+			$limit = $words;
+		}
+		
 		return $this->chop($s, $limit, $unit, $append, $allowedTags);
 	}
 
