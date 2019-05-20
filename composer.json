@@ -28,7 +28,7 @@
         "tcb13/substringy": "^1.0",
         "davechild/textstatistics": "^1.0",
         "icanboogie/inflector": "^1.4",
-        "erusev/parsedown-extra": "^0.7.1",
+        "erusev/parsedown-extra": "^0.7.1|0.8.0-beta-1",
         "mundschenk-at/php-typography": "^6.0"
     },
     "repositories": [
