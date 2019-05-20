@@ -7,6 +7,13 @@ The format of this changelog is based on ["Keep a Changelog"](http://keepachange
 This project adheres to [Semantic Versioning](http://semver.org/). Version numbers follow the pattern: `MAJOR.FEATURE.BUILD`
 
 
+## 3.0.5 - 2019-05-20
+
+### Improved
+
+- Updated the version constraint for [Parsedown Extra](https://github.com/erusev/parsedown-extra) to allow `0.8.0-beta-1`, which resolves a potential dependency version conflict with Doxter. ([#22](https://github.com/TopShelfCraft/Wordsmith/issues/22)) (Projects can use [`prefer-stable`](https://getcomposer.org/doc/04-schema.md#prefer-stable) to keep their Parsedown versions on the stable track in cases where Doxter is not also required.) 
+
+
 ## 3.0.4 - 2018-11-05
 
 ### Fixed
