@@ -7,6 +7,13 @@ The format of this changelog is based on ["Keep a Changelog"](http://keepachange
 This project adheres to [Semantic Versioning](http://semver.org/). Version numbers follow the pattern: `MAJOR.FEATURE.BUILD`
 
 
+## 3.1.0 - 2019-09-20
+
+### Changed
+
+- Updated Wordsmith's Stringy dependency to be consistent with [Craft's updated dependency](https://github.com/craftcms/cms/issues/4753). ([#25](https://github.com/TopShelfCraft/Wordsmith/issues/25)) 
+
+
 ## 3.0.5 - 2019-05-20
 
 ### Improved
