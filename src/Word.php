@@ -11,7 +11,6 @@
 namespace topshelfcraft\wordsmith;
 
 use Stringy\Stringy;
-use SubStringy\SubStringy;
 
 
 /**

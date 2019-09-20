@@ -10,19 +10,18 @@
 
 namespace topshelfcraft\wordsmith\services;
 
+use craft\base\Component;
 use DaveChild\TextStatistics\TextStatistics;
 use ICanBoogie\Inflector;
 use Stringy\Stringy;
-use SubStringy\SubStringy;
-use topshelfcraft\wordsmith\libs\Hacksaw;
-use yii\helpers\Markdown;
-
-use craft\base\Component;
+use topshelfcraft\wordsmith\Word;
 use topshelfcraft\wordsmith\Wordsmith;
 use topshelfcraft\wordsmith\libs\APTitleCapitalizer;
 use topshelfcraft\wordsmith\libs\FullNameParser;
+use topshelfcraft\wordsmith\libs\Hacksaw;
 use topshelfcraft\wordsmith\libs\RomanNumerals;
-use topshelfcraft\wordsmith\Word;
+use topshelfcraft\wordsmith\libs\SubStringy\SubStringy;
+use yii\helpers\Markdown;
 
 /**
  * @author Michael Rog <michael@michaelrog.com>
