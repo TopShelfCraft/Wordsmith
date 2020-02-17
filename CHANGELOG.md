@@ -7,6 +7,13 @@ The format of this changelog is based on ["Keep a Changelog"](http://keepachange
 This project adheres to [Semantic Versioning](http://semver.org/). Version numbers follow the pattern: `MAJOR.FEATURE.BUILD`
 
 
+## 3.1.2 - 2020-02-17
+
+### Fixed
+
+- Updated the version constraint for [Parsedown Extra](https://github.com/erusev/parsedown-extra). ([#29](https://github.com/TopShelfCraft/Wordsmith/issues/29))
+
+
 ## 3.1.1 - 2019-09-20
 
 ### Fixed
