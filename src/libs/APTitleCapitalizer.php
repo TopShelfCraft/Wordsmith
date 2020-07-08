@@ -4,7 +4,7 @@
  *
  * @author     Michael Rog <michael@michaelrog.com>
  * @link       https://topshelfcraft.com
- * @copyright  Copyright 2017, Top Shelf Craft (Michael Rog)
+ * @copyright  Copyright 2020, Top Shelf Craft (Michael Rog)
  * @see        https://github.com/topshelfcraft/Wordsmith
  */
 
@@ -47,7 +47,7 @@ class APTitleCapitalizer
 	public function __construct(array $customProtectedWords = [])
 	{
 		// TODO: Move the reference to Wordsmith's config out of the library to remove its dependence on Wordsmith.
-		$this->standardProtectedWords = Wordsmith::$plugin->getSettings()->apTitleProtectedWords;
+		$this->standardProtectedWords = Wordsmith::getInstance()->getSettings()->apTitleProtectedWords;
 		$this->setCustomProtectedWords($customProtectedWords);
 	}
 

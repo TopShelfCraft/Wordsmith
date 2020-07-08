@@ -4,7 +4,7 @@
  *
  * @author     Michael Rog <michael@michaelrog.com>
  * @link       https://topshelfcraft.com
- * @copyright  Copyright 2017, Top Shelf Craft (Michael Rog)
+ * @copyright  Copyright 2020, Top Shelf Craft (Michael Rog)
  * @see        https://github.com/topshelfcraft/Wordsmith
  */
 
@@ -53,8 +53,8 @@ class WordsmithTwigExtension extends \Twig_Extension implements \Twig_Extension_
     public function getFilters()
     {
 
-		$smith = Wordsmith::$plugin->smith;
-		$prefix = Wordsmith::$plugin->getSettings()->twigPrefix;
+		$smith = Wordsmith::getInstance()->smith;
+		$prefix = Wordsmith::getInstance()->getSettings()->twigPrefix;
 
 		$filters = [];
 
@@ -78,8 +78,8 @@ class WordsmithTwigExtension extends \Twig_Extension implements \Twig_Extension_
     public function getFunctions()
     {
 
-		$smith = Wordsmith::$plugin->smith;
-		$prefix = Wordsmith::$plugin->getSettings()->twigPrefix;
+		$smith = Wordsmith::getInstance()->smith;
+		$prefix = Wordsmith::getInstance()->getSettings()->twigPrefix;
 
 		$functions = [];
 
@@ -97,7 +97,7 @@ class WordsmithTwigExtension extends \Twig_Extension implements \Twig_Extension_
      */
     public function getGlobals()
     {
-        return ['wordsmith' => Wordsmith::$plugin->smith];
+        return ['wordsmith' => Wordsmith::getInstance()->smith];
     }
 
 }

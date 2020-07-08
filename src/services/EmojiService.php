@@ -4,7 +4,7 @@
  *
  * @author     Michael Rog <michael@michaelrog.com>
  * @link       https://topshelfcraft.com
- * @copyright  Copyright 2017, Top Shelf Craft (Michael Rog)
+ * @copyright  Copyright 2020, Top Shelf Craft (Michael Rog)
  * @see        https://github.com/topshelfcraft/Wordsmith
  */
 
@@ -35,7 +35,7 @@ class EmojiService extends Component
 		if (!isset($this->_emojiData))
 		{
 
-			$data = json_decode(file_get_contents(Wordsmith::$plugin->getBasePath() . '/libs/emoji.json'));
+			$data = json_decode(file_get_contents(Wordsmith::getInstance()->getBasePath() . '/libs/emoji.json'));
 
 			$this->_emojiData = array_map(
 				function($entry){
@@ -229,7 +229,7 @@ class EmojiService extends Component
 	public function generateEmojiPhpConstants()
 	{
 
-		$data = json_decode(file_get_contents(Wordsmith::$plugin->getBasePath() . '/libs/emoji.json'));
+		$data = json_decode(file_get_contents(Wordsmith::getInstance()->getBasePath() . '/libs/emoji.json'));
 
 		$data = array_map(
 			function($entry){

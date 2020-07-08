@@ -4,7 +4,7 @@
  *
  * @author     Michael Rog <michael@michaelrog.com>
  * @link       https://topshelfcraft.com
- * @copyright  Copyright 2017, Top Shelf Craft (Michael Rog)
+ * @copyright  Copyright 2020, Top Shelf Craft (Michael Rog)
  * @see        https://github.com/topshelfcraft/Wordsmith
  */
 
@@ -457,7 +457,7 @@ class WordsmithService extends Component
 	 */
 	public function emojify($s, $name_delimiter=':', $emoticon_delimiter='') : string
 	{
-		return Wordsmith::$plugin->emoji->emojify($s, $name_delimiter, $name_delimiter, $emoticon_delimiter, $emoticon_delimiter);
+		return Wordsmith::getInstance()->emoji->emojify($s, $name_delimiter, $name_delimiter, $emoticon_delimiter, $emoticon_delimiter);
 	}
 
 
@@ -967,7 +967,7 @@ class WordsmithService extends Component
 	 */
 	public function smartypants($s, $settings = []) : string
 	{
-		return Wordsmith::$plugin->typography->smartypants($s, $settings);
+		return Wordsmith::getInstance()->typography->smartypants($s, $settings);
 	}
 
 
@@ -1173,7 +1173,7 @@ class WordsmithService extends Component
 	 */
 	public function typogrify($s, $settings = []) : string
 	{
-		return Wordsmith::$plugin->typography->typogrify($s, $settings);
+		return Wordsmith::getInstance()->typography->typogrify($s, $settings);
 	}
 
 
@@ -1189,7 +1189,7 @@ class WordsmithService extends Component
 	 */
 	public function typogrifyFeed($s, $settings = []) : string
 	{
-		return Wordsmith::$plugin->typography->typogrifyFeed($s, $settings);
+		return Wordsmith::getInstance()->typography->typogrifyFeed($s, $settings);
 	}
 
 
@@ -1368,7 +1368,7 @@ class WordsmithService extends Component
 	 */
 	public function widont($s, $settings = []) : string
 	{
-		return Wordsmith::$plugin->typography->widont($s, $settings);
+		return Wordsmith::getInstance()->typography->widont($s, $settings);
 	}
 
 
@@ -1384,7 +1384,7 @@ class WordsmithService extends Component
 	 */
 	public function wrapAmps($s, $class = 'amp', $settings = []) : string
 	{
-		return Wordsmith::$plugin->typography->wrapAmps($s, $class, $settings);
+		return Wordsmith::getInstance()->typography->wrapAmps($s, $class, $settings);
 	}
 
 
@@ -1400,7 +1400,7 @@ class WordsmithService extends Component
 	 */
 	public function wrapCaps($s, $class = 'caps', $settings = []) : string
 	{
-		return Wordsmith::$plugin->typography->wrapCaps($s, $class, $settings);
+		return Wordsmith::getInstance()->typography->wrapCaps($s, $class, $settings);
 	}
 
 
@@ -1419,6 +1419,7 @@ class WordsmithService extends Component
 	/**
 	 * Returns the YouTube video ID from a URL, if one is present in the URL.
 	 *
+	 * c.f. https://gist.github.com/ghalusa/6c7f3a00fd2383e5ef33
 	 * c.f. https://stackoverflow.com/questions/3452546/how-do-i-get-the-youtube-video-id-from-a-url
 	 *
 	 * @param $s
@@ -1426,10 +1427,14 @@ class WordsmithService extends Component
 	 */
     public function youtubeId($s)
 	{
-		if (preg_match("/^.*(youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=)([^#\&\?]*).*/", $s, $matches))
+		if (preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $s, $matches))
 		{
-			return $matches[2];
+			return $matches[1];
 		}
+//		if (preg_match("/^.*(youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=)([^#\&\?]*).*/", $s, $matches))
+//		{
+//			return $matches[2];
+//		}
 		return null;
 	}
 

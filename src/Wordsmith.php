@@ -4,7 +4,7 @@
  *
  * @author     Michael Rog <michael@michaelrog.com>
  * @link       https://topshelfcraft.com
- * @copyright  Copyright 2017, Top Shelf Craft (Michael Rog)
+ * @copyright  Copyright 2020, Top Shelf Craft (Michael Rog)
  * @see        https://github.com/topshelfcraft/Wordsmith
  */
 
@@ -12,15 +12,12 @@ namespace topshelfcraft\wordsmith;
 
 use topshelfcraft\wordsmith\models\Settings;
 use topshelfcraft\wordsmith\services\EmojiService;
-use topshelfcraft\wordsmith\services\TitleCapitalizationService;
 use topshelfcraft\wordsmith\services\TypographyService;
 use topshelfcraft\wordsmith\services\WordsmithService;
 use topshelfcraft\wordsmith\twigextensions\WordsmithTwigExtension;
 
 use Craft;
 use craft\base\Plugin;
-use craft\services\Plugins;
-use craft\events\PluginEvent;
 use craft\web\twig\variables\CraftVariable;
 
 use yii\base\Event;
@@ -39,23 +36,47 @@ use yii\base\Event;
 class Wordsmith extends Plugin
 {
 
-    /*
-     * Static properties
-     * ===========================================================================
-     */
-
     /**
      * Static instance of this plugin class, accessed via `Wordsmith::$plugin`
      *
      * @var Wordsmith
+	 *
+	 * @deprecated Use Wordsmith::getInstance() instead.
+	 *
+	 * @todo Remove in v4.
      */
     public static $plugin;
 
+	/**
+	 * @var bool
+	 */
+	public $hasCpSection = false;
+
+	/**
+	 * @var bool
+	 */
+	public $hasCpSettings = false;
 
     /*
      * Public methods
      * ===========================================================================
      */
+
+	/**
+	 * @inheritdoc
+	 */
+	public function __construct($id, $parent = null, array $config = [])
+	{
+
+		$config['components'] = [
+			'emoji' => EmojiService::class,
+			'smith' => WordsmithService::class,
+			'typography' => TypographyService::class,
+		];
+
+		parent::__construct($id, $parent, $config);
+
+	}
 
     /**
      * @inheritdoc
@@ -75,7 +96,7 @@ class Wordsmith extends Plugin
             function (Event $event) {
                 /** @var CraftVariable $variable **/
                 $variable = $event->sender;
-                $variable->set('wordsmith', Wordsmith::$plugin->smith);
+                $variable->set('wordsmith', Wordsmith::getInstance()->smith);
             }
         );
 

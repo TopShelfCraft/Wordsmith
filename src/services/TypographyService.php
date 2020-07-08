@@ -4,7 +4,7 @@
  *
  * @author     Michael Rog <michael@michaelrog.com>
  * @link       https://topshelfcraft.com
- * @copyright  Copyright 2017, Top Shelf Craft (Michael Rog)
+ * @copyright  Copyright 2020, Top Shelf Craft (Michael Rog)
  * @see        https://github.com/topshelfcraft/Wordsmith
  */
 
@@ -66,9 +66,13 @@ class TypographyService extends Component
 
 			$this->_typographySettings = new \PHP_Typography\Settings();
 
+			// Tweak the de-widow settings to make our `widont` filter a bit more aggressive.
+			$this->_typographySettings->set_max_dewidow_length(10);
+			$this->_typographySettings->set_max_dewidow_pull(10);
+
 			// Apply settings from our plugin config
 
-			$settings = Wordsmith::$plugin->getSettings()->typographySettings;
+			$settings = Wordsmith::getInstance()->getSettings()->typographySettings;
 
 			if (is_array($settings)) {
 				foreach ($settings as $key => $value) {
