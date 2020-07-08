@@ -274,11 +274,10 @@ class WordsmithService extends Component
 
 	];
 
-
-    /*
-     * Public internal methods
-     * ===========================================================================
-     */
+	/*
+	 * Public internal methods
+	 * ===========================================================================
+	 */
 
 	/**
 	 * @return array
@@ -288,13 +287,11 @@ class WordsmithService extends Component
 		return $this->_methods;
 	}
 
-
-    /*
-     * Public API methods
-     * a.k.a The ever-lovin Beef
-     * ===========================================================================
-     */
-
+	/*
+	 * Public API methods
+	 * a.k.a The ever-lovin Beef
+	 * ===========================================================================
+	 */
 
 	/**
 	 * Alias for `wrapAmps()`
@@ -303,11 +300,10 @@ class WordsmithService extends Component
 	 * @param string $class
 	 * @return string
 	 */
-	public function amp($s, $class = 'amp') : string
+	public function amp($s, $class = 'amp'): string
 	{
 		return $this->wrapAmps($s, $class);
 	}
-
 
 	/**
 	 * Intelligently up-cases a string as a headline/title using AP capitalization rules.
@@ -316,11 +312,10 @@ class WordsmithService extends Component
 	 * @param array $protectedWords
 	 * @return string
 	 */
-	public function apTitleize($s, $protectedWords = []) : string
+	public function apTitleize($s, $protectedWords = []): string
 	{
 		return (new APTitleCapitalizer($protectedWords))->capitalize($s);
 	}
-
 
 	/**
 	 * Gives the Automated Readability Index of the text, from 0 to 12.
@@ -328,11 +323,10 @@ class WordsmithService extends Component
 	 * @param $s
 	 * @return int
 	 */
-	public function automatedReadabilityIndex($s) : int
+	public function automatedReadabilityIndex($s): int
 	{
 		return (new TextStatistics())->automatedReadabilityIndex($s);
 	}
-
 
 	/**
 	 * Returns the average number of words per sentence in the text.
@@ -340,11 +334,10 @@ class WordsmithService extends Component
 	 * @param $s
 	 * @return int
 	 */
-	public function averageWordsPerSentence($s) : int
+	public function averageWordsPerSentence($s): int
 	{
 		return (new TextStatistics())->averageWordsPerSentence($s);
 	}
-
 
 	/**
 	 * Returns the substring between $start and $end, if found, or an empty
@@ -353,17 +346,16 @@ class WordsmithService extends Component
 	 *
 	 * c.f. Stringy::between()
 	 *
-	 * @param  string $start  Delimiter marking the start of the substring
-	 * @param  string $end    Delimiter marking the end of the substring
-	 * @param  int    $offset Index from which to begin the search
+	 * @param string $start Delimiter marking the start of the substring
+	 * @param string $end Delimiter marking the end of the substring
+	 * @param int $offset Index from which to begin the search
 	 *
 	 * @return string
 	 */
-	public function between($s, $start, $end, int $offset = 0) : string
+	public function between($s, $start, $end, int $offset = 0): string
 	{
 		return (string) Stringy::create($s)->between($start, $end, $offset);
 	}
-
 
 	/**
 	 * Returns a camelCase version of the string.
@@ -373,11 +365,10 @@ class WordsmithService extends Component
 	 * @param string $s
 	 * @return string
 	 */
-	public function camelize($s) : string
+	public function camelize($s): string
 	{
 		return (string) Stringy::create($s)->camelize();
 	}
-
 
 	/**
 	 * Alias for `wrapCaps()`
@@ -386,11 +377,10 @@ class WordsmithService extends Component
 	 * @param string $class
 	 * @return string
 	 */
-	public function caps($s, $class = 'caps') : string
+	public function caps($s, $class = 'caps'): string
 	{
 		return $this->wrapCaps($s, $class);
 	}
-
 
 	/**
 	 * Helps chop your content down to a manageable size.
@@ -402,11 +392,10 @@ class WordsmithService extends Component
 	 * @param null $allowedTags
 	 * @return string
 	 */
-	public function chop($s, $limit = 1, $unit = 'p', $append = null, $allowedTags = null) : string
+	public function chop($s, $limit = 1, $unit = 'p', $append = null, $allowedTags = null): string
 	{
 		return (new Hacksaw())->chop($s, $limit, $unit, $append, $allowedTags);
 	}
-
 
 	/**
 	 * Gives the Coleman-Liau Index of the text, from 0 to 12.
@@ -414,11 +403,10 @@ class WordsmithService extends Component
 	 * @param $s
 	 * @return int
 	 */
-	public function colemanLiauIndex($s) : int
+	public function colemanLiauIndex($s): int
 	{
 		return (new TextStatistics())->colemanLiauIndex($s);
 	}
-
 
 	/**
 	 * Gives the Dale-Chall readability score of the text, from 0 to 10.
@@ -426,11 +414,10 @@ class WordsmithService extends Component
 	 * @param $s
 	 * @return int
 	 */
-	public function daleChallReadabilityScore($s) : int
+	public function daleChallReadabilityScore($s): int
 	{
 		return (new TextStatistics())->daleChallReadabilityScore($s);
 	}
-
 
 	/**
 	 * Returns a lowercase and trimmed string separated by dashes.
@@ -440,11 +427,10 @@ class WordsmithService extends Component
 	 * @param string $s
 	 * @return string
 	 */
-	public function dasherize($s) : string
+	public function dasherize($s): string
 	{
 		return (string) Stringy::create($s)->dasherize();
 	}
-
 
 	/**
 	 * Replaces emoticons and Emoji name codes in text with their actual Unicode Emoji characters.
@@ -455,11 +441,10 @@ class WordsmithService extends Component
 	 *
 	 * @return string
 	 */
-	public function emojify($s, $name_delimiter=':', $emoticon_delimiter='') : string
+	public function emojify($s, $name_delimiter = ':', $emoticon_delimiter = ''): string
 	{
 		return Wordsmith::getInstance()->emoji->emojify($s, $name_delimiter, $name_delimiter, $emoticon_delimiter, $emoticon_delimiter);
 	}
-
 
 	/**
 	 * Alias for `apTitleize()`
@@ -467,11 +452,10 @@ class WordsmithService extends Component
 	 * @param $s
 	 * @return string
 	 */
-	public function entitle($s) : string
+	public function entitle($s): string
 	{
 		return $this->apTitleize($s);
 	}
-
 
 	/**
 	 * Alias for `givenName()`
@@ -481,11 +465,10 @@ class WordsmithService extends Component
 	 * @param $s
 	 * @return string
 	 */
-	public function firstName($s) : string
+	public function firstName($s): string
 	{
 		return $this->givenName($s);
 	}
-
 
 	/**
 	 * Returns the first word in the string, or an empty string if the source string is empty.
@@ -502,18 +485,16 @@ class WordsmithService extends Component
 		return (Stringy::create($s)->collapseWhitespace()->split(' ', 2))[0];
 	}
 
-
 	/**
 	 * Gives the Flesch-Kincaid Reading Ease of the text, from 0 to 100.
 	 *
 	 * @param $s
 	 * @return int
 	 */
-	public function fleschKincaidReadingEase($s) : int
+	public function fleschKincaidReadingEase($s): int
 	{
 		return (new TextStatistics())->fleschKincaidReadingEase($s);
 	}
-
 
 	/**
 	 * Gives the Flesch-Kincaid Grade level of the text, from 0 to 12.
@@ -521,7 +502,7 @@ class WordsmithService extends Component
 	 * @param $s
 	 * @return int
 	 */
-	public function fleschKincaidGradeLevel($s) : int
+	public function fleschKincaidGradeLevel($s): int
 	{
 		return (new TextStatistics())->fleschKincaidGradeLevel($s);
 	}
@@ -532,11 +513,10 @@ class WordsmithService extends Component
 	 * @param $s
 	 * @return int
 	 */
-	public function gunningFogScore($s) : int
+	public function gunningFogScore($s): int
 	{
 		return (new TextStatistics())->gunningFogScore($s);
 	}
-
 
 	/**
 	 * Attempts to parse a string as a name and returns the first/given name component.
@@ -544,12 +524,11 @@ class WordsmithService extends Component
 	 * @param $s
 	 * @return string
 	 */
-	public function givenName($s) : string
+	public function givenName($s): string
 	{
 		$parts = $this->parseName($s);
 		return $parts['givenName'];
 	}
-
 
 	/**
 	 * Alias for `chop()`
@@ -569,54 +548,53 @@ class WordsmithService extends Component
 	 * @param null $words
 	 * @return string
 	 */
-	public function hacksaw($s, $unit = 'p', $limit = 1, $allowedTags = null, $append = null, $hack = null, $allow = null, $chars = null, $chars_start = null, $words = null) : string
+	public function hacksaw($s, $unit = 'p', $limit = 1, $allowedTags = null, $append = null, $hack = null, $allow = null, $chars = null, $chars_start = null, $words = null): string
 	{
 		if ($hack !== null)
 		{
 			$unit = $hack;
 		}
-		
+
 		if ($allow !== null)
 		{
 			$allowedTags = $allow;
 		}
-		
+
 		if ($chars !== null)
 		{
-			
+
 			$unit = 'c';
 			$limit = $chars;
-			
+
 			if ($chars_start !== null)
 			{
 				$s = mb_substr($s, $chars_start);
 			}
-			
+
 		}
-		
+
 		if ($words !== null)
 		{
 			$unit = 'w';
 			$limit = $words;
 		}
-		
+
 		return $this->chop($s, $limit, $unit, $append, $allowedTags);
 	}
 
-
 	/**
-	 * Capitalizes the first word of the string, replaces underscores with spaces, and strips away an '_id' suffix if one is present.
+	 * Capitalizes the first word of the string, replaces underscores with spaces, and strips away an '_id' suffix if
+	 * one is present.
 	 *
 	 * c.f. Stringy::humanize()
 	 *
 	 * @param string $s
 	 * @return string
 	 */
-	public function humanize($s) : string
+	public function humanize($s): string
 	{
 		return Stringy::create($s)->humanize();
 	}
-
 
 	/**
 	 * Alias for `dasherize()`
@@ -624,29 +602,27 @@ class WordsmithService extends Component
 	 * @param string $s
 	 * @return string
 	 */
-	public function hyphenate($s) : string
+	public function hyphenate($s): string
 	{
 		return $this->dasherize($s);
 	}
 
-
-    /**
-     * Returns whether a thingy is stringy.
-     *
-     * Thingies that are stringy include: a string, a printable number, or a string-castable object
-     *
-     * @param $thingy
-     * @return bool
-     */
-    public function isStringy($thingy) : bool
-    {
-        return (
-            is_string($thingy)
-            || is_numeric($thingy)
-            || (is_object($thingy) && method_exists($thingy, '__toString' ))
-        );
-    }
-
+	/**
+	 * Returns whether a thingy is stringy.
+	 *
+	 * Thingies that are stringy include: a string, a printable number, or a string-castable object
+	 *
+	 * @param $thingy
+	 * @return bool
+	 */
+	public function isStringy($thingy): bool
+	{
+		return (
+			is_string($thingy)
+			|| is_numeric($thingy)
+			|| (is_object($thingy) && method_exists($thingy, '__toString'))
+		);
+	}
 
 	/**
 	 * Alias for `surname()`
@@ -656,11 +632,10 @@ class WordsmithService extends Component
 	 * @param $s
 	 * @return string
 	 */
-	public function lastName($s) : string
+	public function lastName($s): string
 	{
 		return $this->surname($s);
 	}
-
 
 	/**
 	 * Returns the last word in the string, or an empty string if the source string is empty.
@@ -678,7 +653,6 @@ class WordsmithService extends Component
 		return (string) current(end($words));
 	}
 
-
 	/**
 	 * Lowercases any Roman numerals found in the string.
 	 *
@@ -686,13 +660,14 @@ class WordsmithService extends Component
 	 * @param string $matchMode
 	 * @return string
 	 */
-	public function lowerCaseRoman($s, $matchMode = 'strict') : string
+	public function lowerCaseRoman($s, $matchMode = 'strict'): string
 	{
 		$result = RomanNumerals::romanNumeralMatchCallback(
 			$s,
 			$matchMode,
 			function (array $matches) {
-				if (empty($matches[1])) {
+				if (empty($matches[1]))
+				{
 					return $matches[1];
 				}
 				return strtolower($matches[1]);
@@ -700,7 +675,6 @@ class WordsmithService extends Component
 		);
 		return $result;
 	}
-
 
 	/**
 	 * Parses text through Markdown.
@@ -710,7 +684,7 @@ class WordsmithService extends Component
 	 * @param bool $inlineOnly
 	 * @return string
 	 */
-	public function markdown($s, $flavor = 'gfm', $inlineOnly = false) : string
+	public function markdown($s, $flavor = 'gfm', $inlineOnly = false): string
 	{
 
 		// If flavor is 'extra' we're looking for Parsedown
@@ -718,9 +692,12 @@ class WordsmithService extends Component
 		if ($flavor == 'extra')
 		{
 
-			if ($inlineOnly) {
+			if ($inlineOnly)
+			{
 				return (new \ParsedownExtra())->line($s);
-			} else {
+			}
+			else
+			{
 				return (new \ParsedownExtra())->text($s);
 			}
 
@@ -730,14 +707,16 @@ class WordsmithService extends Component
 
 		$flavor = ($flavor == 'yii-extra' ? 'extra' : $flavor);
 
-		if ($inlineOnly) {
+		if ($inlineOnly)
+		{
 			return Markdown::processParagraph($s, $flavor);
-		} else {
+		}
+		else
+		{
 			return Markdown::process($s, $flavor);
 		}
 
 	}
-
 
 	/**
 	 * Alias for `markdown()`
@@ -747,11 +726,10 @@ class WordsmithService extends Component
 	 * @param bool $inlineOnly
 	 * @return string
 	 */
-	public function md($s, $flavor = 'gfm', $inlineOnly = false) : string
+	public function md($s, $flavor = 'gfm', $inlineOnly = false): string
 	{
 		return $this->markdown($s, $flavor, $inlineOnly);
 	}
-
 
 	/**
 	 * Returns the ordinal suffix for the given number.
@@ -759,11 +737,10 @@ class WordsmithService extends Component
 	 * @param $num
 	 * @return string
 	 */
-	public function ordinal($num) : string
+	public function ordinal($num): string
 	{
 		return Inflector::get()->ordinal($num);
 	}
-
 
 	/**
 	 * Returns the ordinalized variation of the given number.
@@ -771,11 +748,10 @@ class WordsmithService extends Component
 	 * @param $num
 	 * @return string
 	 */
-	public function ordinalize($num) : string
+	public function ordinalize($num): string
 	{
 		return Inflector::get()->ordinalize($num);
 	}
-
 
 	/**
 	 * Alias for `markdown()` using the 'gfm' flavor.
@@ -784,11 +760,10 @@ class WordsmithService extends Component
 	 * @param bool $inlineOnly
 	 * @return string
 	 */
-	public function parsedown($s, $inlineOnly = false) : string
+	public function parsedown($s, $inlineOnly = false): string
 	{
 		return $this->markdown($s, 'gfm', $inlineOnly);
 	}
-
 
 	/**
 	 * Alias for `markdown()` using the 'extra' flavor.
@@ -797,11 +772,10 @@ class WordsmithService extends Component
 	 * @param bool $inlineOnly
 	 * @return string
 	 */
-	public function parsedownExtra($s, $inlineOnly = false) : string
+	public function parsedownExtra($s, $inlineOnly = false): string
 	{
 		return $this->markdown($s, 'extra', $inlineOnly);
 	}
-
 
 	/**
 	 * Attempts to parse a string as a name and returns its component parts (i.e. firstName, lastName, etc.)
@@ -813,7 +787,7 @@ class WordsmithService extends Component
 	 * @param $s
 	 * @return array
 	 */
-	public function parseName($s) : array
+	public function parseName($s): array
 	{
 
 		$parts = FullNameParser::parse($s);
@@ -835,14 +809,13 @@ class WordsmithService extends Component
 
 	}
 
-
 	/**
 	 * Attempts to parse a string as a URL and returns its component parts (i.e. scheme, host, path, etc.)
 	 *
 	 * @param $s
 	 * @return array
 	 */
-	public function parseUrl($s) : array
+	public function parseUrl($s): array
 	{
 
 		$parts = parse_url($s);
@@ -860,7 +833,6 @@ class WordsmithService extends Component
 
 	}
 
-
 	/**
 	 * Alias for `parsedownExtra()`
 	 *
@@ -868,11 +840,10 @@ class WordsmithService extends Component
 	 * @param bool $inlineOnly
 	 * @return string
 	 */
-	public function pde($s, $inlineOnly = false) : string
+	public function pde($s, $inlineOnly = false): string
 	{
 		return $this->parsedownExtra($s, $inlineOnly);
 	}
-
 
 	/**
 	 * Alias for `upperCamelize()`
@@ -880,11 +851,10 @@ class WordsmithService extends Component
 	 * @param string $s
 	 * @return string
 	 */
-	public function pascalize($s) : string
+	public function pascalize($s): string
 	{
 		return $this->upperCamelize($s);
 	}
-
 
 	/**
 	 * Returns the correct singular/plural form of the given word, for the provided quantity and language.
@@ -894,7 +864,7 @@ class WordsmithService extends Component
 	 * @param string $locale
 	 * @return string
 	 */
-	public function pluralize($s, $qty = 2, $locale = 'en') : string
+	public function pluralize($s, $qty = 2, $locale = 'en'): string
 	{
 		if (intval($qty) != 1)
 		{
@@ -902,7 +872,6 @@ class WordsmithService extends Component
 		}
 		return Inflector::get($locale)->singularize($s);
 	}
-
 
 	/**
 	 * Calculates the units of time required for an average person to read the given passage of text.
@@ -917,9 +886,8 @@ class WordsmithService extends Component
 	public function readTime($s, $rate = 200, $minimum = 1)
 	{
 		$words = $this->wordcount($s);
-		return max( intval($minimum), floor($words / intval($rate)) );
+		return max(intval($minimum), floor($words / intval($rate)));
 	}
-
 
 	/**
 	 * Returns an approximate count of sentences in the text.
@@ -927,7 +895,7 @@ class WordsmithService extends Component
 	 * @param $s
 	 * @return int
 	 */
-	public function sentenceCount($s) : int
+	public function sentenceCount($s): int
 	{
 		return (new TextStatistics())->sentenceCount($s);
 	}
@@ -939,11 +907,10 @@ class WordsmithService extends Component
 	 * @param string $locale
 	 * @return string
 	 */
-	public function singularize($s, $locale = 'en') : string
+	public function singularize($s, $locale = 'en'): string
 	{
 		return Inflector::get($locale)->singularize($s);
 	}
-
 
 	/**
 	 * Converts the string into an URL slug.
@@ -953,11 +920,10 @@ class WordsmithService extends Component
 	 * @param string $s
 	 * @return string
 	 */
-	public function slugify($s) : string
+	public function slugify($s): string
 	{
 		return (string) Stringy::create($s)->slugify();
 	}
-
 
 	/**
 	 * c.f. PHP-Typography
@@ -965,11 +931,10 @@ class WordsmithService extends Component
 	 * @param string $s
 	 * @return string
 	 */
-	public function smartypants($s, $settings = []) : string
+	public function smartypants($s, $settings = []): string
 	{
 		return Wordsmith::getInstance()->typography->smartypants($s, $settings);
 	}
-
 
 	/**
 	 * Gives the SMOG Index of the text, from 0 to 12.
@@ -977,11 +942,10 @@ class WordsmithService extends Component
 	 * @param $s
 	 * @return int
 	 */
-	public function smogIndex($s) : int
+	public function smogIndex($s): int
 	{
 		return (new TextStatistics())->smogIndex($s);
 	}
-
 
 	/**
 	 * Gives the Spache readability score of the text, from 0 to 5.
@@ -990,11 +954,10 @@ class WordsmithService extends Component
 	 * @param $s
 	 * @return int
 	 */
-	public function spacheReadabilityScore($s) : int
+	public function spacheReadabilityScore($s): int
 	{
 		return (new TextStatistics())->spacheReadabilityScore($s);
 	}
-
 
 	/**
 	 * Gets the substring after the first occurrence of a separator.
@@ -1015,7 +978,6 @@ class WordsmithService extends Component
 		return ($s === false ? null : $s);
 	}
 
-
 	/**
 	 * Gets the substring after the last occurrence of a separator.
 	 * If no match is found returns an empty string.
@@ -1034,7 +996,6 @@ class WordsmithService extends Component
 		$s = SubStringy::create($s)->substringAfterLast($separator);
 		return ($s === false ? null : $s);
 	}
-
 
 	/**
 	 * Gets the substring before the first occurrence of a separator.
@@ -1055,7 +1016,6 @@ class WordsmithService extends Component
 		return ($s === false ? null : $s);
 	}
 
-
 	/**
 	 * Gets the substring before the last occurrence of a separator.
 	 * If no match is found returns an empty string.
@@ -1075,7 +1035,6 @@ class WordsmithService extends Component
 		return ($s === false ? null : $s);
 	}
 
-
 	/**
 	 * Count occurrences of the substring in the source string.
 	 *
@@ -1086,11 +1045,10 @@ class WordsmithService extends Component
 	 *
 	 * @return int
 	 */
-	public function substringCount($s, $substring) : int
+	public function substringCount($s, $substring): int
 	{
 		return SubStringy::create($s)->substringCount($substring);
 	}
-
 
 	/**
 	 * Attempts to parse a string as a name and returns the surname (i.e. 'last name') component.
@@ -1098,12 +1056,11 @@ class WordsmithService extends Component
 	 * @param $s
 	 * @return string
 	 */
-	public function surname($s) : string
+	public function surname($s): string
 	{
 		$parts = $this->parseName($s);
 		return $parts['surname'];
 	}
-
 
 	/**
 	 * Returns a trimmed string with the first letter of each word capitalized.
@@ -1114,11 +1071,10 @@ class WordsmithService extends Component
 	 * @param array $ignore
 	 * @return string
 	 */
-	public function titleize($s, $ignore=[]) : string
+	public function titleize($s, $ignore = []): string
 	{
 		return (string) Stringy::create($s)->titleize($ignore);
 	}
-
 
 	/**
 	 * Returns a string with whitespace removed from the start and end of the string.
@@ -1129,7 +1085,7 @@ class WordsmithService extends Component
 	 * @param string $chars
 	 * @return string
 	 */
-	public function trim($s, $chars = null) : string
+	public function trim($s, $chars = null): string
 	{
 		return (string) Stringy::create($s)->trim($chars);
 	}
@@ -1143,7 +1099,7 @@ class WordsmithService extends Component
 	 * @param string $chars
 	 * @return string
 	 */
-	public function trimLeft($s, $chars = null) : string
+	public function trimLeft($s, $chars = null): string
 	{
 		return (string) Stringy::create($s)->trimLeft($chars);
 	}
@@ -1157,11 +1113,10 @@ class WordsmithService extends Component
 	 * @param string $chars
 	 * @return string
 	 */
-	public function trimRight($s, $chars = null) : string
+	public function trimRight($s, $chars = null): string
 	{
 		return (string) Stringy::create($s)->trimRight($chars);
 	}
-
 
 	/**
 	 * Typogrify applies a full suite of typographic treatments to beautify your web typography.
@@ -1171,11 +1126,10 @@ class WordsmithService extends Component
 	 * @param string $s
 	 * @return string
 	 */
-	public function typogrify($s, $settings = []) : string
+	public function typogrify($s, $settings = []): string
 	{
 		return Wordsmith::getInstance()->typography->typogrify($s, $settings);
 	}
-
 
 	/**
 	 * Applies a full suite of typographic treatments to beautify your web typography,
@@ -1187,11 +1141,10 @@ class WordsmithService extends Component
 	 * @param string $s
 	 * @return string
 	 */
-	public function typogrifyFeed($s, $settings = []) : string
+	public function typogrifyFeed($s, $settings = []): string
 	{
 		return Wordsmith::getInstance()->typography->typogrifyFeed($s, $settings);
 	}
-
 
 	/**
 	 * Returns a lowercase and trimmed string separated by underscores.
@@ -1201,23 +1154,21 @@ class WordsmithService extends Component
 	 * @param string $s
 	 * @return string
 	 */
-	public function underscore($s) : string
+	public function underscore($s): string
 	{
 		return (string) Stringy::create($s)->underscored();
 	}
-
 
 	/**
 	 * Alias for `underscore()`
 	 *
 	 * @param string $s
-	 * @return Word
+	 * @return string
 	 */
 	public function underscored($s)
 	{
 		return $this->underscore($s);
 	}
-
 
 	/**
 	 * Uppercases any Roman numerals found in the string.
@@ -1226,13 +1177,14 @@ class WordsmithService extends Component
 	 * @param string $match_mode
 	 * @return string
 	 */
-	public function upperCaseRoman($s, $match_mode = 'strict') : string
+	public function upperCaseRoman($s, $match_mode = 'strict'): string
 	{
 		$result = RomanNumerals::romanNumeralMatchCallback(
 			$s,
 			$match_mode,
 			function (array $matches) {
-				if (empty($matches[1])) {
+				if (empty($matches[1]))
+				{
 					return $matches[1];
 				}
 				return strtoupper($matches[1]);
@@ -1240,7 +1192,6 @@ class WordsmithService extends Component
 		);
 		return $result;
 	}
-
 
 	/**
 	 * Returns an UpperCamelCase version of the supplied string.
@@ -1250,14 +1201,14 @@ class WordsmithService extends Component
 	 * @param string $s
 	 * @return string
 	 */
-	public function upperCamelize($s) : string
+	public function upperCamelize($s): string
 	{
 		return (string) Stringy::create($s)->upperCamelize();
 	}
 
-
 	/**
-	 * Returns the fragment component of a URL. (i.e. the part after a hashmark '#', which usually represents an anchor on the target page.)
+	 * Returns the fragment component of a URL. (i.e. the part after a hashmark '#', which usually represents an anchor
+	 * on the target page.)
 	 *
 	 * @param $s
 	 * @return string|null
@@ -1344,18 +1295,16 @@ class WordsmithService extends Component
 		return ($this->parseUrl($s))['user'];
 	}
 
-
 	/**
 	 * Alias for `wordcount()`
 	 *
 	 * @param $s
 	 * @return int
 	 */
-	public function wc($s) : int
+	public function wc($s): int
 	{
 		return $this->wordcount($s);
 	}
-
 
 	/**
 	 * Replaces the space between the last two words in a string with a `&nbsp;` to prevent widowing.
@@ -1366,11 +1315,10 @@ class WordsmithService extends Component
 	 * @param array $settings
 	 * @return string
 	 */
-	public function widont($s, $settings = []) : string
+	public function widont($s, $settings = []): string
 	{
 		return Wordsmith::getInstance()->typography->widont($s, $settings);
 	}
-
 
 	/**
 	 * Wraps ampersands in `<span class="amp">` so they can be styled with CSS.
@@ -1382,11 +1330,10 @@ class WordsmithService extends Component
 	 * @param array $settings
 	 * @return string
 	 */
-	public function wrapAmps($s, $class = 'amp', $settings = []) : string
+	public function wrapAmps($s, $class = 'amp', $settings = []): string
 	{
 		return Wordsmith::getInstance()->typography->wrapAmps($s, $class, $settings);
 	}
-
 
 	/**
 	 * Wraps all-uppercase words in `<span class="caps">` so they can be styled with CSS.
@@ -1398,11 +1345,10 @@ class WordsmithService extends Component
 	 * @param array $settings
 	 * @return string
 	 */
-	public function wrapCaps($s, $class = 'caps', $settings = []) : string
+	public function wrapCaps($s, $class = 'caps', $settings = []): string
 	{
 		return Wordsmith::getInstance()->typography->wrapCaps($s, $class, $settings);
 	}
-
 
 	/**
 	 * // TODO: Document `wordcount`
@@ -1410,11 +1356,10 @@ class WordsmithService extends Component
 	 * @param $s
 	 * @return int
 	 */
-	public function wordcount($s) : int
+	public function wordcount($s): int
 	{
 		return Stringy::create(strip_tags($s))->collapseWhitespace()->countSubstr(' ') + 1;
 	}
-
 
 	/**
 	 * Returns the YouTube video ID from a URL, if one is present in the URL.
@@ -1425,7 +1370,7 @@ class WordsmithService extends Component
 	 * @param $s
 	 * @return string|null
 	 */
-    public function youtubeId($s)
+	public function youtubeId($s)
 	{
 		if (preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $s, $matches))
 		{
@@ -1437,7 +1382,6 @@ class WordsmithService extends Component
 //		}
 		return null;
 	}
-
 
 	/*
 	 * TEST METHODS
@@ -1464,34 +1408,6 @@ class WordsmithService extends Component
 		$stringy = Stringy::create('') ? 'not empty' : 'empty';
 		$string = '' ? 'not empty' : 'empty';
 		var_dump([$stringy, $string]);
-	}
-
-
-	/*
-	 * MAGIC METHODS
-	 *
-	 *
-	 *
-	 */
-
-
-	/**
-	 * @param string $name
-	 * @param array $params
-	 * @return mixed|void
-	 */
-	public function __call($name, $params)
-	{
-
-//		exit(print_r([$name, $params], true));
-//		return parent::__call($name, $params); // TODO: Change the autogenerated stub
-//		exit("go away");
-//		if (!method_exists($callable[0], $callable[1])) {
-//			// __call()
-//			return array(null, array());
-//		}
-//		$r = new ReflectionMethod($callable[0], $callable[1]);
-//		throw new \BadMethodCallException();
 	}
 
 }

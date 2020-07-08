@@ -25,33 +25,30 @@ use Twig_Function;
 class WordsmithTwigExtension extends \Twig_Extension implements \Twig_Extension_GlobalsInterface
 {
 
+	/*
+	 * Public methods
+	 * ===========================================================================
+	 */
 
-    /*
-     * Public methods
-     * ===========================================================================
-     */
+	/**
+	 * Returns the name of the extension.
+	 *
+	 * @return string The extension name
+	 */
+	public function getName()
+	{
+		return 'Wordsmith';
+	}
 
-
-    /**
-     * Returns the name of the extension.
-     *
-     * @return string The extension name
-     */
-    public function getName()
-    {
-        return 'Wordsmith';
-    }
-
-
-    /**
-     * Returns an array of Twig filters, to be used in Twig templates via:
-     *
-     *      {{ 'bar' | fooFilter }}
-     *
-     * @return array
-     */
-    public function getFilters()
-    {
+	/**
+	 * Returns an array of Twig filters, to be used in Twig templates via:
+	 *
+	 *      {{ 'bar' | fooFilter }}
+	 *
+	 * @return array
+	 */
+	public function getFilters()
+	{
 
 		$smith = Wordsmith::getInstance()->smith;
 		$prefix = Wordsmith::getInstance()->getSettings()->twigPrefix;
@@ -60,23 +57,22 @@ class WordsmithTwigExtension extends \Twig_Extension implements \Twig_Extension_
 
 		foreach ($smith->getMethodList() as $method => $meta)
 		{
-			$filters[] = new Twig_Filter($prefix.$method, [$smith, $method], $meta);
+			$filters[] = new Twig_Filter($prefix . $method, [$smith, $method], $meta);
 		}
 
 		return $filters;
 
-    }
+	}
 
-
-    /**
-     * Returns an array of Twig functions, used in Twig templates via:
-     *
-     *      {% set fizz = fooFunction('buzz') %}
-     *
-     * @return array
-     */
-    public function getFunctions()
-    {
+	/**
+	 * Returns an array of Twig functions, used in Twig templates via:
+	 *
+	 *      {% set fizz = fooFunction('buzz') %}
+	 *
+	 * @return array
+	 */
+	public function getFunctions()
+	{
 
 		$smith = Wordsmith::getInstance()->smith;
 		$prefix = Wordsmith::getInstance()->getSettings()->twigPrefix;
@@ -85,19 +81,19 @@ class WordsmithTwigExtension extends \Twig_Extension implements \Twig_Extension_
 
 		foreach ($smith->getMethodList() as $method => $meta)
 		{
-			$functions[] = new Twig_Function($prefix.$method, [$smith, $method], $meta);
+			$functions[] = new Twig_Function($prefix . $method, [$smith, $method], $meta);
 		}
 
-        return $functions;
+		return $functions;
 
-    }
+	}
 
-    /**
-     * @inheritdoc
-     */
-    public function getGlobals()
-    {
-        return ['wordsmith' => Wordsmith::getInstance()->smith];
-    }
+	/**
+	 * @inheritdoc
+	 */
+	public function getGlobals()
+	{
+		return ['wordsmith' => Wordsmith::getInstance()->smith];
+	}
 
 }

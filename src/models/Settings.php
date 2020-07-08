@@ -29,12 +29,10 @@ class Settings extends Model
 	 */
 	public $twigPrefix = '';
 
-
 	/**
 	 * @var string
 	 */
 	public $apTitleProtectedWords = ['a', 'an', 'and', 'at', 'as', 'but', 'by', 'en', 'for', 'if', 'in', 'nor', 'of', 'on', 'or', 'so', 'the', 'to', 'up', 'yet', 'via', 'vs'];
-
 
 	/**
 	 * @var array

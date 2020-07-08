@@ -38,7 +38,7 @@ class EmojiService extends Component
 			$data = json_decode(file_get_contents(Wordsmith::getInstance()->getBasePath() . '/libs/emoji.json'));
 
 			$this->_emojiData = array_map(
-				function($entry){
+				function ($entry) {
 
 					$assumedName = !empty($entry->name) ? $entry->name : (string) Stringy::create($entry->short_name)->humanize()->toUpperCase();
 					$snakeName = Stringy::create($assumedName)->toLowerCase()->replace('&', 'AND')->slugify('_');
@@ -57,7 +57,7 @@ class EmojiService extends Component
 						'snakeName' => (string) $snakeName,
 						'constantName' => $constantName,
 						'camelName' => $camelName,
-						'unicode' => constant('topshelfcraft\wordsmith\libs\Emoji::'.$constantName)
+						'unicode' => constant('topshelfcraft\wordsmith\libs\Emoji::' . $constantName)
 					];
 				},
 				$data
@@ -82,13 +82,13 @@ class EmojiService extends Component
 
 		$replacements = [];
 
-		foreach($this->getEmojiData() as $emoji)
+		foreach ($this->getEmojiData() as $emoji)
 		{
 			if (!empty($emoji['shortNames']))
 			{
 				foreach ($emoji['shortNames'] as $shortName)
 				{
-					$replacements[$startDelimiter.$shortName.$endDelimiter] = $emoji['unicode'];
+					$replacements[$startDelimiter . $shortName . $endDelimiter] = $emoji['unicode'];
 				}
 			}
 		}
@@ -107,11 +107,11 @@ class EmojiService extends Component
 
 		$replacements = [];
 
-		foreach($this->getEmojiData() as $emoji)
+		foreach ($this->getEmojiData() as $emoji)
 		{
 			if (!empty($emoji['snakeName']))
 			{
-				$replacements[$startDelimiter.$emoji['snakeName'].$endDelimiter] = $emoji['unicode'];
+				$replacements[$startDelimiter . $emoji['snakeName'] . $endDelimiter] = $emoji['unicode'];
 			}
 		}
 
@@ -129,11 +129,11 @@ class EmojiService extends Component
 
 		$replacements = [];
 
-		foreach($this->getEmojiData() as $emoji)
+		foreach ($this->getEmojiData() as $emoji)
 		{
 			if (!empty($emoji['constantName']))
 			{
-				$replacements[$startDelimiter.$emoji['constantName'].$endDelimiter] = $emoji['unicode'];
+				$replacements[$startDelimiter . $emoji['constantName'] . $endDelimiter] = $emoji['unicode'];
 			}
 		}
 
@@ -151,11 +151,11 @@ class EmojiService extends Component
 
 		$replacements = [];
 
-		foreach($this->getEmojiData() as $emoji)
+		foreach ($this->getEmojiData() as $emoji)
 		{
 			if (!empty($emoji['camelName']))
 			{
-				$replacements[$startDelimiter.$emoji['camelName'].$endDelimiter] = $emoji['unicode'];
+				$replacements[$startDelimiter . $emoji['camelName'] . $endDelimiter] = $emoji['unicode'];
 			}
 		}
 
@@ -173,13 +173,13 @@ class EmojiService extends Component
 
 		$replacements = [];
 
-		foreach($this->getEmojiData() as $emoji)
+		foreach ($this->getEmojiData() as $emoji)
 		{
 			if (!empty($emoji['texts']))
 			{
 				foreach ($emoji['texts'] as $text)
 				{
-					$replacements[$startDelimiter.$text.$endDelimiter] = $emoji['unicode'];
+					$replacements[$startDelimiter . $text . $endDelimiter] = $emoji['unicode'];
 				}
 			}
 		}
@@ -187,7 +187,6 @@ class EmojiService extends Component
 		return $replacements;
 
 	}
-
 
 	/**
 	 * @param $str
@@ -198,7 +197,7 @@ class EmojiService extends Component
 	 *
 	 * @return string The parsed text
 	 */
-	public function emojify($str, $nameStartDelimiter=':', $nameEndDelimiter=":", $textStartDelimiter='', $textEndDelimiter='')
+	public function emojify($str, $nameStartDelimiter = ':', $nameEndDelimiter = ":", $textStartDelimiter = '', $textEndDelimiter = '')
 	{
 
 		$sets = [
@@ -218,7 +217,6 @@ class EmojiService extends Component
 
 	}
 
-
 	/**
 	 * For internal use only.
 	 *
@@ -232,7 +230,7 @@ class EmojiService extends Component
 		$data = json_decode(file_get_contents(Wordsmith::getInstance()->getBasePath() . '/libs/emoji.json'));
 
 		$data = array_map(
-			function($entry){
+			function ($entry) {
 
 				$assumedName = !empty($entry->name) ? $entry->name : (string) Stringy::create($entry->short_name)->humanize()->toUpperCase();
 				$constantName = (string) Stringy::create($assumedName)->toLowerCase()->replace('&', 'AND')->slugify('_')->toUpperCase();
@@ -261,6 +259,5 @@ class EmojiService extends Component
 		return $output;
 
 	}
-
 
 }

@@ -33,12 +33,10 @@ class TypographyService extends Component
 	private $_typographer;
 	private $_typographySettings;
 
-
 	/*
      * Public methods
      * ===========================================================================
      */
-
 
 	/**
 	 *
@@ -47,7 +45,6 @@ class TypographyService extends Component
 	{
 		parent::init();
 	}
-
 
 	/**
 	 * @return \PHP_Typography\PHP_Typography
@@ -74,8 +71,10 @@ class TypographyService extends Component
 
 			$settings = Wordsmith::getInstance()->getSettings()->typographySettings;
 
-			if (is_array($settings)) {
-				foreach ($settings as $key => $value) {
+			if (is_array($settings))
+			{
+				foreach ($settings as $key => $value)
+				{
 					$this->_typographySettings->{$key}($value);
 				}
 			}
@@ -95,8 +94,10 @@ class TypographyService extends Component
 
 		$settings = (clone $this->_typographySettings);
 
-		if (is_array($adhocSettings)) {
-			foreach ($adhocSettings as $key => $value) {
+		if (is_array($adhocSettings))
+		{
+			foreach ($adhocSettings as $key => $value)
+			{
 				$settings->{$key}($value);
 			}
 		}
@@ -112,7 +113,8 @@ class TypographyService extends Component
 	 */
 	public function typogrify($text, $adhocSettings = [])
 	{
-		if (empty($text)) {
+		if (empty($text))
+		{
 			return '';
 		}
 		$result = $this->getTypographer()->process($text, $this->getTypographySettings($adhocSettings));
@@ -126,13 +128,13 @@ class TypographyService extends Component
 	 */
 	public function typogrifyFeed($text, $adhocSettings = [])
 	{
-		if (empty($text)) {
+		if (empty($text))
+		{
 			return '';
 		}
 		$result = $this->getTypographer()->process_feed($text, $this->getTypographySettings($adhocSettings));
 		return $result;
 	}
-
 
 	/**
 	 * @param string $text
@@ -141,13 +143,13 @@ class TypographyService extends Component
 	 */
 	public function smartypants($text, $adhocSettings = [])
 	{
-		if (empty($text)) {
+		if (empty($text))
+		{
 			return '';
 		}
 		$result = $this->getTypographer()->process_textnodes($text, [(new Smart_Quotes_Fix()), 'apply'], $this->getTypographySettings($adhocSettings));
 		return $result;
 	}
-
 
 	/**
 	 * @param $text
@@ -156,13 +158,13 @@ class TypographyService extends Component
 	 */
 	public function widont($text, $adhocSettings = [])
 	{
-		if (empty($text)) {
+		if (empty($text))
+		{
 			return '';
 		}
 		$result = $this->getTypographer()->process_textnodes($text, [(new Dewidow_Fix()), 'apply'], $this->getTypographySettings($adhocSettings));
 		return $result;
 	}
-
 
 	/**
 	 * @param $text
@@ -172,13 +174,13 @@ class TypographyService extends Component
 	 */
 	public function wrapAmps($text, $class, $adhocSettings = [])
 	{
-		if (empty($text)) {
+		if (empty($text))
+		{
 			return '';
 		}
 		$result = $this->getTypographer()->process_textnodes($text, [(new Style_Ampersands_Fix($class)), 'apply'], $this->getTypographySettings($adhocSettings));
 		return $result;
 	}
-
 
 	/**
 	 * @param $text
@@ -188,12 +190,12 @@ class TypographyService extends Component
 	 */
 	public function wrapCaps($text, $class, $adhocSettings = [])
 	{
-		if (empty($text)) {
+		if (empty($text))
+		{
 			return '';
 		}
 		$result = $this->getTypographer()->process_textnodes($text, [(new Style_Caps_Fix($class)), 'apply'], $this->getTypographySettings($adhocSettings));
 		return $result;
 	}
-
 
 }

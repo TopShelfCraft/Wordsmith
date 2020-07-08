@@ -36,16 +36,16 @@ use yii\base\Event;
 class Wordsmith extends Plugin
 {
 
-    /**
-     * Static instance of this plugin class, accessed via `Wordsmith::$plugin`
-     *
-     * @var Wordsmith
+	/**
+	 * Static instance of this plugin class, accessed via `Wordsmith::$plugin`
+	 *
+	 * @var Wordsmith
 	 *
 	 * @deprecated Use Wordsmith::getInstance() instead.
 	 *
 	 * @todo Remove in v4.
-     */
-    public static $plugin;
+	 */
+	public static $plugin;
 
 	/**
 	 * @var bool
@@ -57,10 +57,10 @@ class Wordsmith extends Plugin
 	 */
 	public $hasCpSettings = false;
 
-    /*
-     * Public methods
-     * ===========================================================================
-     */
+	/*
+	 * Public methods
+	 * ===========================================================================
+	 */
 
 	/**
 	 * @inheritdoc
@@ -78,34 +78,34 @@ class Wordsmith extends Plugin
 
 	}
 
-    /**
-     * @inheritdoc
-     */
-    public function init()
-    {
+	/**
+	 * @inheritdoc
+	 */
+	public function init()
+	{
 
-        parent::init();
-        self::$plugin = $this;
+		parent::init();
+		self::$plugin = $this;
 
-        Craft::$app->getView()->registerTwigExtension(new WordsmithTwigExtension());
+		Craft::$app->getView()->registerTwigExtension(new WordsmithTwigExtension());
 
-        // For folks coming from Craft 2.x, we'll provide our methods under a `{{ craft.wordsmith }}` variable
-        Event::on(
-            CraftVariable::class,
-            CraftVariable::EVENT_INIT,
-            function (Event $event) {
-                /** @var CraftVariable $variable **/
-                $variable = $event->sender;
-                $variable->set('wordsmith', Wordsmith::getInstance()->smith);
-            }
-        );
+		// For folks coming from Craft 2.x, we'll provide our methods under a `{{ craft.wordsmith }}` variable
+		Event::on(
+			CraftVariable::class,
+			CraftVariable::EVENT_INIT,
+			function (Event $event) {
+				/** @var CraftVariable $variable * */
+				$variable = $event->sender;
+				$variable->set('wordsmith', Wordsmith::getInstance()->smith);
+			}
+		);
 
-    }
+	}
 
-    /*
-     * Protected methods
-     * ===========================================================================
-     */
+	/*
+	 * Protected methods
+	 * ===========================================================================
+	 */
 
 	/**
 	 * Creates and returns the model used to store the plugin’s settings.
