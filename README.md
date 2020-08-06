@@ -48,6 +48,10 @@ Wordsmith is a blazing fast, multi-byte safe, one-stop text manipulation toolkit
 
 _Wordsmith is also available for installation via the Craft CMS Plugin Store._
 
+#### ❗ Updating to Craft 3.5  
+
+_When updating to Craft 3.5+, make sure your dependency constraint allows Wordsmith 3.3+ to be installed. (Craft 3.5 changed to an updated branch of the Stringy library; Wordsmith 3.3 updates its internal dependency to match.)_
+
 
 ## Documentation
 
