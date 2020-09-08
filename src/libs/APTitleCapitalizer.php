@@ -59,7 +59,7 @@ class APTitleCapitalizer
 	 */
 	public function setCustomProtectedWords(array $words)
 	{
-		$this->customProtectedWords = [];
+		$this->customProtectedWords = Wordsmith::getInstance()->getSettings()->customProtectedWords;
 		foreach ($words as $word) {
 			$this->customProtectedWords[] = Stringy::create($word)->trim();
 		}

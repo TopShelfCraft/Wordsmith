@@ -38,5 +38,11 @@ class Settings extends Model
 	 * @var array
 	 */
 	public $typographySettings = [];
+	
+	/**
+	 * @var array
+	 */
+	public $customProtectedWords = ['COVID','USA'];
+
 
 }
