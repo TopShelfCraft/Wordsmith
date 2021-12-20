@@ -1,8 +1,11 @@
 <?php
 /**
- * @link https://craftcms.com/
- * @copyright Copyright (c) Pixel & Tonic, Inc.
- * @license https://craftcms.github.io/license/
+ * Wordsmith
+ *
+ * @author     Michael Rog <michael@michaelrog.com>
+ * @link       https://topshelfcraft.com
+ * @copyright  Copyright 2020, Top Shelf Craft (Michael Rog)
+ * @see        https://github.com/topshelfcraft/Wordsmith
  */
 
 namespace topshelfcraft\wordsmith\gql\directives;
@@ -18,10 +21,9 @@ use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
 
 /**
- * Class Wordsmith
- *
- * @author Pixel & Tonic, Inc. <support@pixelandtonic.com>
- * @since 3.3.0
+ * @author Michael Rog <michael@michaelrog.com>
+ * @package Wordsmith
+ * @since 3.3.0.1
  */
 class WordsmithTransform extends Directive
 {
