@@ -15,9 +15,12 @@ use topshelfcraft\wordsmith\services\EmojiService;
 use topshelfcraft\wordsmith\services\TypographyService;
 use topshelfcraft\wordsmith\services\WordsmithService;
 use topshelfcraft\wordsmith\twigextensions\WordsmithTwigExtension;
+use topshelfcraft\wordsmith\gql\directives\WordsmithTransform;
 
 use Craft;
+use craft\services\Gql;
 use craft\base\Plugin;
+use craft\events\RegisterGqlDirectivesEvent;
 use craft\web\twig\variables\CraftVariable;
 
 use yii\base\Event;
@@ -99,6 +102,11 @@ class Wordsmith extends Plugin
 				$variable->set('wordsmith', Wordsmith::getInstance()->smith);
 			}
 		);
+		Craft::info('We Are Here', 'wordsmith');
+
+
+		// Register GraphQL functionality
+        $this->registerGraphQL();
 
 	}
 
@@ -116,5 +124,24 @@ class Wordsmith extends Plugin
 	{
 		return new Settings();
 	}
+
+	/**
+     * Register GraphQL event listeners
+     */
+    private function registerGraphQL(): void
+    {
+            
+		// Register directives            
+		Event::on(
+			Gql::class,
+			Gql::EVENT_REGISTER_GQL_DIRECTIVES,
+			function(RegisterGqlDirectivesEvent $event) {
+				$event->directives[] = WordsmithTransform::class;
+				Craft::info('We Are Here', 'wordsmith');
+			}
+		);
+        
+		
+    }
 
 }
