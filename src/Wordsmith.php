@@ -102,7 +102,6 @@ class Wordsmith extends Plugin
 				$variable->set('wordsmith', Wordsmith::getInstance()->smith);
 			}
 		);
-		Craft::info('We Are Here', 'wordsmith');
 
 
 		// Register GraphQL functionality
@@ -137,7 +136,6 @@ class Wordsmith extends Plugin
 			Gql::EVENT_REGISTER_GQL_DIRECTIVES,
 			function(RegisterGqlDirectivesEvent $event) {
 				$event->directives[] = WordsmithTransform::class;
-				Craft::info('We Are Here', 'wordsmith');
 			}
 		);
         
