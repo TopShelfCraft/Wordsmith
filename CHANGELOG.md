@@ -7,22 +7,29 @@ The format of this changelog is based on ["Keep a Changelog"](http://keepachange
 This project adheres to [Semantic Versioning](http://semver.org/). Version numbers follow the pattern: `MAJOR.FEATURE.BUILD`
 
 
+## 3.3.1.1 - 2022-05-16
+
+### Fixed
+
+- Fixed changelog formatting.
+
+
 ## 3.3.1 - 2022-05-15
 
-## Improved
+### Improved
 
 - Updated the version constraint for [Inflector](https://github.com/ICanBoogie/Inflector) to allow `2.0`, which fixes PHP 7.4 compatibility. ([#34](https://github.com/TopShelfCraft/Wordsmith/issues/34))
 
 
 ## 3.3.0.1 - 2020-08-07
 
-## Improved
+### Improved
  
 - Increased the `widont` line length threshold, to make `widont` a bit more liberal in closing up widowed lines. ([#5](https://github.com/TopShelfCraft/Wordsmith/issues/5))
 - Updated the version constraint for [Stringy](https://github.com/voku/Stringy) to make Wordsmith compatible with Craft 3.5. ([#33](https://github.com/TopShelfCraft/Wordsmith/issues/33))
 - _(Wordsmith 3.3.0.1 is a re-tag of version 3.3.0 with more flexible dependency constraints to avoid errors when updating to Craft 3.5.)_
 
-## Deprecated
+### Deprecated
 
 - The static `$plugin` accessor will be removed in v4. Use `Wordsmith::getInstance()` instead.
 
