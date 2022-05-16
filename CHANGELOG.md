@@ -7,6 +7,13 @@ The format of this changelog is based on ["Keep a Changelog"](http://keepachange
 This project adheres to [Semantic Versioning](http://semver.org/). Version numbers follow the pattern: `MAJOR.FEATURE.BUILD`
 
 
+## 3.3.1 - 2022-05-15
+
+## Improved
+
+- Updated the version constraint for [Inflector](https://github.com/ICanBoogie/Inflector) to allow `2.0`, which fixes PHP 7.4 compatibility. ([#34](https://github.com/TopShelfCraft/Wordsmith/issues/34))
+
+
 ## 3.3.0.1 - 2020-08-07
 
 ## Improved
