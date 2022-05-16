@@ -2,7 +2,7 @@
     "name": "topshelfcraft/wordsmith",
     "description": "...because you have the best words.",
     "type": "craft-plugin",
-    "version": "4.0.0",
+    "version": "4.0.0.1",
     "keywords": [
         "craft",
         "cms",
