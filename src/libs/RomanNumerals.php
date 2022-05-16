@@ -8,7 +8,7 @@
  * @see        https://github.com/topshelfcraft/Wordsmith
  */
 
-namespace topshelfcraft\wordsmith\libs;
+namespace TopShelfCraft\Wordsmith\libs;
 
 /*
  * This file is based on the `RomanNumeralTrait` class from GeckoPackages.

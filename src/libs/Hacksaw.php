@@ -8,7 +8,7 @@
  * @see        https://github.com/topshelfcraft/Wordsmith
  */
 
-namespace topshelfcraft\wordsmith\libs;
+namespace TopShelfCraft\Wordsmith\libs;
 
 /*
  * This class is inspired by the Hacksaw plugin for ExpressionEngine, by Brett DeWoody

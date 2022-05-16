@@ -1,6 +1,6 @@
 <?php
 
-namespace topshelfcraft\wordsmith\libs\SubStringy;
+namespace TopShelfCraft\Wordsmith\libs\SubStringy;
 
 use Stringy\Stringy;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace topshelfcraft\wordsmith\libs\SubStringy;
+namespace TopShelfCraft\Wordsmith\libs\SubStringy;
 
 /**
  * Designed to be used as a mixin for a subclass of Stringy that combines

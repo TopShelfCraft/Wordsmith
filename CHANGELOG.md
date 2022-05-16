@@ -1,10 +1,24 @@
 # Wordsmith Changelog
 
-All notable changes to the Wordsmith plugin will be documented in this file.
+The format of this file is based on ["Keep a Changelog"](http://keepachangelog.com/). This project adheres to [Semantic Versioning](http://semver.org/). Version numbers follow the pattern: `MAJOR.FEATURE.BUGFIX`
 
-The format of this changelog is based on ["Keep a Changelog"](http://keepachangelog.com/).
 
-This project adheres to [Semantic Versioning](http://semver.org/). Version numbers follow the pattern: `MAJOR.FEATURE.BUILD`
+## 4.0.0 - 2022-05-15
+
+### Improved
+
+- Wordsmith is ready for Craft 4!
+- Updated Emoji definitions to Unicode version 14 (September 2021).
+
+### Changed
+
+- Fully typed `Settings` properties.
+- Moved `Settings` model to the root namespace.
+- Moved `WordsmithTwigExtension` to the `view` namespace.
+
+### Removed
+
+- Removed `Wordsmith::$plugin` static accessor; use `getInstance()` instead.
 
 
 ## 3.3.0.1 - 2020-08-07

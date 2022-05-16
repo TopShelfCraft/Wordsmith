@@ -1,91 +1,44 @@
 <?php
-/**
- * Wordsmith
- *
- * @author     Michael Rog <michael@michaelrog.com>
- * @link       https://topshelfcraft.com
- * @copyright  Copyright 2020, Top Shelf Craft (Michael Rog)
- * @see        https://github.com/topshelfcraft/Wordsmith
- */
-
-namespace topshelfcraft\wordsmith;
-
-use topshelfcraft\wordsmith\models\Settings;
-use topshelfcraft\wordsmith\services\EmojiService;
-use topshelfcraft\wordsmith\services\TypographyService;
-use topshelfcraft\wordsmith\services\WordsmithService;
-use topshelfcraft\wordsmith\twigextensions\WordsmithTwigExtension;
+namespace TopShelfCraft\Wordsmith;
 
 use Craft;
-use craft\base\Plugin;
 use craft\web\twig\variables\CraftVariable;
-
+use TopShelfCraft\base\Plugin;
+use TopShelfCraft\Wordsmith\services\EmojiService;
+use TopShelfCraft\Wordsmith\services\TypographyService;
+use TopShelfCraft\Wordsmith\services\WordsmithService;
+use TopShelfCraft\Wordsmith\view\WordsmithTwigExtension;
 use yii\base\Event;
 
 /**
  * @author Michael Rog <michael@michaelrog.com>
- * @package Wordsmith
- * @since 3.0.0
+ * @link https://topshelfcraft.com
+ * @copyright Copyright 2022, Top Shelf Craft (Michael Rog)
  *
  * @property  EmojiService $emoji
  * @property  WordsmithService $smith
  * @property  TypographyService $typography
  *
- * @method    Settings getSettings()
+ * @method Settings getSettings()
  */
 class Wordsmith extends Plugin
 {
 
-	/**
-	 * Static instance of this plugin class, accessed via `Wordsmith::$plugin`
-	 *
-	 * @var Wordsmith
-	 *
-	 * @deprecated Use Wordsmith::getInstance() instead.
-	 *
-	 * @todo Remove in v4.
-	 */
-	public static $plugin;
+	public ?string $changelogUrl = 'https://raw.githubusercontent.com/TopShelfCraft/Wordsmith/master/CHANGELOG.md';
+	public bool $hasCpSection = false;
+	public bool $hasCpSettings = false;
+	public string $schemaVersion = "0.0.0.0";
 
-	/**
-	 * @var bool
-	 */
-	public $hasCpSection = false;
-
-	/**
-	 * @var bool
-	 */
-	public $hasCpSettings = false;
-
-	/*
-	 * Public methods
-	 * ===========================================================================
-	 */
-
-	/**
-	 * @inheritdoc
-	 */
-	public function __construct($id, $parent = null, array $config = [])
-	{
-
-		$config['components'] = [
-			'emoji' => EmojiService::class,
-			'smith' => WordsmithService::class,
-			'typography' => TypographyService::class,
-		];
-
-		parent::__construct($id, $parent, $config);
-
-	}
-
-	/**
-	 * @inheritdoc
-	 */
 	public function init()
 	{
 
+		$this->setComponents([
+			'emoji' => EmojiService::class,
+			'smith' => WordsmithService::class,
+			'typography' => TypographyService::class,
+		]);
+
 		parent::init();
-		self::$plugin = $this;
 
 		Craft::$app->getView()->registerTwigExtension(new WordsmithTwigExtension());
 
@@ -102,17 +55,10 @@ class Wordsmith extends Plugin
 
 	}
 
-	/*
-	 * Protected methods
-	 * ===========================================================================
-	 */
-
 	/**
 	 * Creates and returns the model used to store the plugin’s settings.
-	 *
-	 * @return Settings|null
 	 */
-	protected function createSettingsModel()
+	protected function createSettingsModel(): Settings
 	{
 		return new Settings();
 	}

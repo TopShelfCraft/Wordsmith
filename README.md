@@ -1,6 +1,6 @@
 # Wordsmith
 
-_a plugin for Craft CMS 3.x_
+_a plugin for Craft CMS_
 
 **A [Top Shelf Craft](https://topshelfcraft.com) creation**  
 [Michael Rog](https://michaelrog.com), Proprietor

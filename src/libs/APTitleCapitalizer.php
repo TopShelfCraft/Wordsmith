@@ -8,7 +8,7 @@
  * @see        https://github.com/topshelfcraft/Wordsmith
  */
 
-namespace topshelfcraft\wordsmith\libs;
+namespace TopShelfCraft\Wordsmith\libs;
 
 /*
  * This file is based on the `CapitalizationHelper` class from the Craft Entitle plugin.
@@ -19,7 +19,7 @@ namespace topshelfcraft\wordsmith\libs;
  */
 
 use Stringy\Stringy;
-use topshelfcraft\wordsmith\Wordsmith;
+use TopShelfCraft\Wordsmith\Wordsmith;
 
 /**
  * @author Michael Rog <michael@michaelrog.com>

@@ -1,41 +1,22 @@
 <?php
-/**
- * Wordsmith
- *
- * @author     Michael Rog <michael@michaelrog.com>
- * @link       https://topshelfcraft.com
- * @copyright  Copyright 2020, Top Shelf Craft (Michael Rog)
- * @see        https://github.com/topshelfcraft/Wordsmith
- */
+namespace TopShelfCraft\Wordsmith\view;
 
-namespace topshelfcraft\wordsmith\twigextensions;
+use TopShelfCraft\Wordsmith\Wordsmith;
 
-use topshelfcraft\wordsmith\Wordsmith;
+use Twig\Extension\AbstractExtension;
+use Twig\Extension\GlobalsInterface;
+use Twig\TwigFilter;
+use Twig\TwigFunction;
 
-use Craft;
-use Twig_Filter;
-use Twig_Function;
-
-
-/**
- * @author Michael Rog <michael@michaelrog.com>
- * @package Wordsmith
- * @since 3.0.0
- */
-class WordsmithTwigExtension extends \Twig_Extension implements \Twig_Extension_GlobalsInterface
+class WordsmithTwigExtension extends AbstractExtension implements GlobalsInterface
 {
-
-	/*
-	 * Public methods
-	 * ===========================================================================
-	 */
 
 	/**
 	 * Returns the name of the extension.
 	 *
 	 * @return string The extension name
 	 */
-	public function getName()
+	public function getName(): string
 	{
 		return 'Wordsmith';
 	}
@@ -47,7 +28,7 @@ class WordsmithTwigExtension extends \Twig_Extension implements \Twig_Extension_
 	 *
 	 * @return array
 	 */
-	public function getFilters()
+	public function getFilters(): array
 	{
 
 		$smith = Wordsmith::getInstance()->smith;
@@ -57,7 +38,7 @@ class WordsmithTwigExtension extends \Twig_Extension implements \Twig_Extension_
 
 		foreach ($smith->getMethodList() as $method => $meta)
 		{
-			$filters[] = new Twig_Filter($prefix . $method, [$smith, $method], $meta);
+			$filters[] = new TwigFilter($prefix . $method, [$smith, $method], $meta);
 		}
 
 		return $filters;
@@ -71,7 +52,7 @@ class WordsmithTwigExtension extends \Twig_Extension implements \Twig_Extension_
 	 *
 	 * @return array
 	 */
-	public function getFunctions()
+	public function getFunctions(): array
 	{
 
 		$smith = Wordsmith::getInstance()->smith;
@@ -81,7 +62,7 @@ class WordsmithTwigExtension extends \Twig_Extension implements \Twig_Extension_
 
 		foreach ($smith->getMethodList() as $method => $meta)
 		{
-			$functions[] = new Twig_Function($prefix . $method, [$smith, $method], $meta);
+			$functions[] = new TwigFunction($prefix . $method, [$smith, $method], $meta);
 		}
 
 		return $functions;
@@ -91,7 +72,7 @@ class WordsmithTwigExtension extends \Twig_Extension implements \Twig_Extension_
 	/**
 	 * @inheritdoc
 	 */
-	public function getGlobals()
+	public function getGlobals(): array
 	{
 		return ['wordsmith' => Wordsmith::getInstance()->smith];
 	}

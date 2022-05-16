@@ -1,33 +1,19 @@
 <?php
-/**
- * Wordsmith
- *
- * @author     Michael Rog <michael@michaelrog.com>
- * @link       https://topshelfcraft.com
- * @copyright  Copyright 2020, Top Shelf Craft (Michael Rog)
- * @see        https://github.com/topshelfcraft/Wordsmith
- */
-
-namespace topshelfcraft\wordsmith\services;
+namespace TopShelfCraft\Wordsmith\services;
 
 use craft\base\Component;
 use DaveChild\TextStatistics\TextStatistics;
 use ICanBoogie\Inflector;
 use Stringy\Stringy;
-use topshelfcraft\wordsmith\Word;
-use topshelfcraft\wordsmith\Wordsmith;
-use topshelfcraft\wordsmith\libs\APTitleCapitalizer;
-use topshelfcraft\wordsmith\libs\FullNameParser;
-use topshelfcraft\wordsmith\libs\Hacksaw;
-use topshelfcraft\wordsmith\libs\RomanNumerals;
-use topshelfcraft\wordsmith\libs\SubStringy\SubStringy;
+use TopShelfCraft\Wordsmith\Word;
+use TopShelfCraft\Wordsmith\Wordsmith;
+use TopShelfCraft\Wordsmith\libs\APTitleCapitalizer;
+use TopShelfCraft\Wordsmith\libs\FullNameParser;
+use TopShelfCraft\Wordsmith\libs\Hacksaw;
+use TopShelfCraft\Wordsmith\libs\RomanNumerals;
+use TopShelfCraft\Wordsmith\libs\SubStringy\SubStringy;
 use yii\helpers\Markdown;
 
-/**
- * @author Michael Rog <michael@michaelrog.com>
- * @package Wordsmith
- * @since 3.0.0
- */
 class WordsmithService extends Component
 {
 

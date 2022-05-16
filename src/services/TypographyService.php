@@ -1,55 +1,19 @@
 <?php
-/**
- * Wordsmith
- *
- * @author     Michael Rog <michael@michaelrog.com>
- * @link       https://topshelfcraft.com
- * @copyright  Copyright 2020, Top Shelf Craft (Michael Rog)
- * @see        https://github.com/topshelfcraft/Wordsmith
- */
+namespace TopShelfCraft\Wordsmith\services;
 
-namespace topshelfcraft\wordsmith\services;
-
-use craft\base\Component;
 use PHP_Typography\Fixes\Node_Fixes\Dewidow_Fix;
 use PHP_Typography\Fixes\Node_Fixes\Smart_Quotes_Fix;
 use PHP_Typography\Fixes\Node_Fixes\Style_Ampersands_Fix;
 use PHP_Typography\Fixes\Node_Fixes\Style_Caps_Fix;
-use topshelfcraft\wordsmith\Wordsmith;
+use TopShelfCraft\Wordsmith\Wordsmith;
 
-/**
- * @author Michael Rog <michael@michaelrog.com>
- * @package Wordsmith
- * @since 3.0.0
- */
-class TypographyService extends Component
+class TypographyService
 {
-
-	/*
-     * Private properties
-     * ===========================================================================
-     */
 
 	private $_typographer;
 	private $_typographySettings;
 
-	/*
-     * Public methods
-     * ===========================================================================
-     */
-
-	/**
-	 *
-	 */
-	public function init()
-	{
-		parent::init();
-	}
-
-	/**
-	 * @return \PHP_Typography\PHP_Typography
-	 */
-	public function getTypographer()
+	public function getTypographer(): \PHP_Typography\PHP_Typography
 	{
 
 		if (!isset($this->_typographer))
@@ -85,11 +49,7 @@ class TypographyService extends Component
 
 	}
 
-	/**
-	 * @param array $adhocSettings
-	 * @return \PHP_Typography\Settings
-	 */
-	public function getTypographySettings($adhocSettings = [])
+	public function getTypographySettings(array $adhocSettings = []): \PHP_Typography\Settings
 	{
 
 		$settings = (clone $this->_typographySettings);
@@ -106,12 +66,7 @@ class TypographyService extends Component
 
 	}
 
-	/**
-	 * @param string $text
-	 *
-	 * @return string
-	 */
-	public function typogrify($text, $adhocSettings = [])
+	public function typogrify(string $text, array $adhocSettings = []): string
 	{
 		if (empty($text))
 		{
@@ -121,12 +76,7 @@ class TypographyService extends Component
 		return $result;
 	}
 
-	/**
-	 * @param string $text
-	 *
-	 * @return string
-	 */
-	public function typogrifyFeed($text, $adhocSettings = [])
+	public function typogrifyFeed(string $text, array $adhocSettings = []): string
 	{
 		if (empty($text))
 		{
@@ -136,12 +86,7 @@ class TypographyService extends Component
 		return $result;
 	}
 
-	/**
-	 * @param string $text
-	 *
-	 * @return string
-	 */
-	public function smartypants($text, $adhocSettings = [])
+	public function smartypants(string $text, array $adhocSettings = []): string
 	{
 		if (empty($text))
 		{
@@ -151,12 +96,7 @@ class TypographyService extends Component
 		return $result;
 	}
 
-	/**
-	 * @param $text
-	 * @param array $adhocSettings
-	 * @return string
-	 */
-	public function widont($text, $adhocSettings = [])
+	public function widont($text, array $adhocSettings = []): string
 	{
 		if (empty($text))
 		{
@@ -166,13 +106,7 @@ class TypographyService extends Component
 		return $result;
 	}
 
-	/**
-	 * @param $text
-	 * @param $class
-	 * @param array $adhocSettings
-	 * @return string
-	 */
-	public function wrapAmps($text, $class, $adhocSettings = [])
+	public function wrapAmps($text, string $class, array $adhocSettings = []): string
 	{
 		if (empty($text))
 		{
@@ -182,13 +116,7 @@ class TypographyService extends Component
 		return $result;
 	}
 
-	/**
-	 * @param $text
-	 * @param $class
-	 * @param array $adhocSettings
-	 * @return string
-	 */
-	public function wrapCaps($text, $class, $adhocSettings = [])
+	public function wrapCaps($text, string $class, array $adhocSettings = []): string
 	{
 		if (empty($text))
 		{

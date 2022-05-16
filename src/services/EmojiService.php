@@ -1,35 +1,16 @@
 <?php
-/**
- * Wordsmith
- *
- * @author     Michael Rog <michael@michaelrog.com>
- * @link       https://topshelfcraft.com
- * @copyright  Copyright 2020, Top Shelf Craft (Michael Rog)
- * @see        https://github.com/topshelfcraft/Wordsmith
- */
+namespace TopShelfCraft\Wordsmith\services;
 
-namespace topshelfcraft\wordsmith\services;
-
-use craft\base\Component;
 use Stringy\Stringy;
-use topshelfcraft\wordsmith\libs\Emoji;
-use topshelfcraft\wordsmith\Wordsmith;
+use TopShelfCraft\Wordsmith\libs\Emoji;
+use TopShelfCraft\Wordsmith\Wordsmith;
 
-
-/**
- * @author Michael Rog <michael@michaelrog.com>
- * @package Wordsmith
- * @since 3.0.0
- */
-class EmojiService extends Component
+class EmojiService
 {
 
-	private $_emojiData;
+	private array $_emojiData;
 
-	/**
-	 * @return array
-	 */
-	public function getEmojiData()
+	public function getEmojiData(): array
 	{
 
 		if (!isset($this->_emojiData))
@@ -57,7 +38,7 @@ class EmojiService extends Component
 						'snakeName' => (string) $snakeName,
 						'constantName' => $constantName,
 						'camelName' => $camelName,
-						'unicode' => constant('topshelfcraft\wordsmith\libs\Emoji::' . $constantName)
+						'unicode' => constant('TopShelfCraft\Wordsmith\libs\Emoji::' . $constantName)
 					];
 				},
 				$data
@@ -72,12 +53,7 @@ class EmojiService extends Component
 
 	}
 
-	/**
-	 * @param string $startDelimiter
-	 * @param string $endDelimiter
-	 * @return array
-	 */
-	public function getShortNameReplacements($startDelimiter = ':', $endDelimiter = ':')
+	public function getShortNameReplacements(string $startDelimiter = ':', string $endDelimiter = ':'): array
 	{
 
 		$replacements = [];
@@ -97,12 +73,7 @@ class EmojiService extends Component
 
 	}
 
-	/**
-	 * @param string $startDelimiter
-	 * @param string $endDelimiter
-	 * @return array
-	 */
-	public function getSnakeNameReplacements($startDelimiter = ':', $endDelimiter = ':')
+	public function getSnakeNameReplacements(string $startDelimiter = ':', string $endDelimiter = ':'): array
 	{
 
 		$replacements = [];
@@ -119,12 +90,7 @@ class EmojiService extends Component
 
 	}
 
-	/**
-	 * @param string $startDelimiter
-	 * @param string $endDelimiter
-	 * @return array
-	 */
-	public function getConstantNameReplacements($startDelimiter = ':', $endDelimiter = ':')
+	public function getConstantNameReplacements(string $startDelimiter = ':', string $endDelimiter = ':'): array
 	{
 
 		$replacements = [];
@@ -141,12 +107,7 @@ class EmojiService extends Component
 
 	}
 
-	/**
-	 * @param string $startDelimiter
-	 * @param string $endDelimiter
-	 * @return array
-	 */
-	public function getCamelNameReplacements($startDelimiter = ':', $endDelimiter = ':')
+	public function getCamelNameReplacements(string $startDelimiter = ':', string $endDelimiter = ':'): array
 	{
 
 		$replacements = [];
@@ -163,12 +124,7 @@ class EmojiService extends Component
 
 	}
 
-	/**
-	 * @param string $startDelimiter
-	 * @param string $endDelimiter
-	 * @return array
-	 */
-	public function getTextReplacements($startDelimiter = '', $endDelimiter = '')
+	public function getTextReplacements(string $startDelimiter = '', string $endDelimiter = ''): array
 	{
 
 		$replacements = [];
@@ -188,16 +144,7 @@ class EmojiService extends Component
 
 	}
 
-	/**
-	 * @param $str
-	 * @param string $nameStartDelimiter
-	 * @param string $nameEndDelimiter
-	 * @param string $textStartDelimiter
-	 * @param string $textEndDelimiter
-	 *
-	 * @return string The parsed text
-	 */
-	public function emojify($str, $nameStartDelimiter = ':', $nameEndDelimiter = ":", $textStartDelimiter = '', $textEndDelimiter = '')
+	public function emojify($str, string $nameStartDelimiter = ':', string $nameEndDelimiter = ":", string $textStartDelimiter = '', string $textEndDelimiter = ''): string
 	{
 
 		$sets = [
@@ -218,13 +165,10 @@ class EmojiService extends Component
 	}
 
 	/**
-	 * For internal use only.
-	 *
-	 * We use this function to reformat data from the source-of-truth JSON in order to create the code for \libs\Emoji.php
-	 *
-	 * @return string
+	 * @internal
+	 * For internal use only: We use this function to reformat data from the source-of-truth JSON in order to create the code for \libs\Emoji.php
 	 */
-	public function generateEmojiPhpConstants()
+	public function generateEmojiPhpConstants(): string
 	{
 
 		$data = json_decode(file_get_contents(Wordsmith::getInstance()->getBasePath() . '/libs/emoji.json'));
