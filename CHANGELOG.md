@@ -21,6 +21,13 @@ The format of this file is based on ["Keep a Changelog"](http://keepachangelog.c
 - Removed `Wordsmith::$plugin` static accessor; use `getInstance()` instead.
 
 
+## 3.3.1 - 2022-05-15
+
+## Improved
+
+- Updated the version constraint for [Inflector](https://github.com/ICanBoogie/Inflector) to allow `2.0`, which fixes PHP 7.4 compatibility. ([#34](https://github.com/TopShelfCraft/Wordsmith/issues/34))
+
+
 ## 3.3.0.1 - 2020-08-07
 
 ## Improved
