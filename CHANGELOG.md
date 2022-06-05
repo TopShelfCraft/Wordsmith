@@ -3,6 +3,13 @@
 The format of this file is based on ["Keep a Changelog"](http://keepachangelog.com/). This project adheres to [Semantic Versioning](http://semver.org/). Version numbers follow the pattern: `MAJOR.FEATURE.BUGFIX`
 
 
+## 4.0.1 - 2022-06-05
+
+### Fixed
+
+- Update string access syntax in Full Name Parser library, to fix PHP 8 support. ([#45](https://github.com/TopShelfCraft/Wordsmith/issues/45))
+
+
 ## 4.0.0.1 - 2022-05-16
 
 ### Fixed
