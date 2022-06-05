@@ -473,7 +473,7 @@ class FullNameParser
 	 */
 	protected function is_initial($word)
 	{
-		return ((mb_strlen($word) == 1) || (mb_strlen($word) == 2 && $word{1} == "."));
+		return ((mb_strlen($word) == 1) || (mb_strlen($word) == 2 && $word[1] == "."));
 	}
 
 	# helper public function for fix_case
@@ -499,19 +499,19 @@ class FullNameParser
 		# Special case for 2-letter words
 		if (mb_strlen($word) == 2) {
 			# Both letters vowels (uppercase both)
-			if (in_array(mb_strtolower($word{0}), $this->dict['vowels']) && in_array(mb_strtolower($word{1}), $this->dict['vowels'])) {
+			if (in_array(mb_strtolower($word[0]), $this->dict['vowels']) && in_array(mb_strtolower($word[1]), $this->dict['vowels'])) {
 				$word = mb_strtoupper($word);
 			}
 			# Both letters consonants (uppercase both)
-			if (!in_array(mb_strtolower($word{0}), $this->dict['vowels']) && !in_array(mb_strtolower($word{1}), $this->dict['vowels'])) {
+			if (!in_array(mb_strtolower($word[0]), $this->dict['vowels']) && !in_array(mb_strtolower($word[1]), $this->dict['vowels'])) {
 				$word = mb_strtoupper($word);
 			}
 			# First letter is vowel, second letter consonant (uppercase first)
-			if (in_array(mb_strtolower($word{0}), $this->dict['vowels']) && !in_array(mb_strtolower($word{1}), $this->dict['vowels'])) {
+			if (in_array(mb_strtolower($word[0]), $this->dict['vowels']) && !in_array(mb_strtolower($word[1]), $this->dict['vowels'])) {
 				$word = $this->mb_ucfirst(mb_strtolower($word));
 			}
 			# First letter consonant, second letter vowel or "y" (uppercase first)
-			if (!in_array(mb_strtolower($word{0}), $this->dict['vowels']) && (in_array(mb_strtolower($word{1}), $this->dict['vowels']) || mb_strtolower($word{1}) == 'y')) {
+			if (!in_array(mb_strtolower($word[0]), $this->dict['vowels']) && (in_array(mb_strtolower($word[1]), $this->dict['vowels']) || mb_strtolower($word[1]) == 'y')) {
 				$word = $this->mb_ucfirst(mb_strtolower($word));
 			}
 		}
