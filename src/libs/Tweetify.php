@@ -1,25 +1,11 @@
 <?php
-/**
- * Wordsmith
- *
- * @author     Michael Rog <michael@michaelrog.com>
- * @link       https://topshelfcraft.com
- * @copyright  Copyright 2020, Top Shelf Craft (Michael Rog)
- * @see        https://github.com/topshelfcraft/Wordsmith
- */
-
 namespace TopShelfCraft\Wordsmith\libs;
 
-/*
- * Originally created by Michael Rog for https://github.com/RogEE/Tweetify
- *
- * TODO: Make this multi-byte safe, and strip out the EE gunk.
- */
-
 /**
- * @author Michael Rog <michael@michaelrog.com>
- * @package Wordsmith
- * @since 3.1.2
+ * Tweetify library, originally created by Michael Rog for https://github.com/RogEE/Tweetify
+ *
+ * @internal In development; not rated for use yet.
+ * @todo Make this multi-byte safe, and more general (not Twitter-specific).
  */
 class Tweetify
 {
