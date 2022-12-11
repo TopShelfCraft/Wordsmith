@@ -12,6 +12,7 @@ use TopShelfCraft\Wordsmith\libs\FullNameParser;
 use TopShelfCraft\Wordsmith\libs\Hacksaw;
 use TopShelfCraft\Wordsmith\libs\RomanNumerals;
 use TopShelfCraft\Wordsmith\libs\SubStringy\SubStringy;
+use TopShelfCraft\Wordsmith\libs\Videos;
 use yii\helpers\Markdown;
 
 class WordsmithService extends Component
@@ -232,6 +233,9 @@ class WordsmithService extends Component
 		],
 		'trimRight' => [
 			'source' => 'internal', 'category' => 'truncation'
+		],
+		'vimeoId' => [
+			'source' => 'internal', 'category' => 'urls'
 		],
 		'wc' => [
 			'source' => 'internal', 'category' => 'statistics'
@@ -1284,6 +1288,14 @@ class WordsmithService extends Component
 	}
 
 	/**
+	 * Returns the Vimeo video ID from a URL, if one is present in the URL.
+	 */
+	public function vimeoId($s): ?string
+	{
+		return Videos::getVimeoId((string) $s);
+	}
+
+	/**
 	 * Alias for `wordcount()`
 	 *
 	 * @param $s
@@ -1354,21 +1366,10 @@ class WordsmithService extends Component
 	 *
 	 * c.f. https://gist.github.com/ghalusa/6c7f3a00fd2383e5ef33
 	 * c.f. https://stackoverflow.com/questions/3452546/how-do-i-get-the-youtube-video-id-from-a-url
-	 *
-	 * @param $s
-	 * @return string|null
 	 */
-	public function youtubeId($s)
+	public function youtubeId($s): ?string
 	{
-		if (preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $s, $matches))
-		{
-			return $matches[1];
-		}
-//		if (preg_match("/^.*(youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=)([^#\&\?]*).*/", $s, $matches))
-//		{
-//			return $matches[2];
-//		}
-		return null;
+		return Videos::getYoutubeId((string) $s);
 	}
 
 	/*
