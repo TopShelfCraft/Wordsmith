@@ -9,13 +9,17 @@ The format of this file is based on ["Keep a Changelog"](http://keepachangelog.c
 
 - Added `vimeoId` function.
 
+### Improved
+
+- Improved `apTitleize` handling for a few corner cases, including international characters ([#14](https://github.com/TopShelfCraft/Wordsmith/issues/14)), quotes, mixed alpha-numeric tokens, multiple sentences, punctuation other than periods, and words containing multiple apostrophes.
+
 
 ## 4.1.0 - 2022-12-10
 
 ### Added
 
 - Settings can now be constructed using the fluent config style.
-- Added `protectedTitleWords` config, for words that should not be transformed when formatting titles with the `apTitleize` function.
+- Added `protectedTitleWords` config, for words that should not be transformed when formatting titles with the `apTitleize` function. ([#41](https://github.com/TopShelfCraft/Wordsmith/pull/41))
 - `apTitleize` now leaves common known acronyms alone if they're already uppercase in the source string — e.g. "CPR", "KFC", "USA", and "YOLO!"
 
 ### Changed
@@ -25,7 +29,7 @@ The format of this file is based on ["Keep a Changelog"](http://keepachangelog.c
 
 ### Fixed
 
-- Fixed a bug where `typogrify` filter would throw an error if the argument was null. This now fails silently and returns an empty string, like in Craft 3.
+- Fixed a bug where `typogrify` filter would throw an error if the argument was null. This now fails silently and returns an empty string, like in Craft 3. ([#54](https://github.com/TopShelfCraft/Wordsmith/issues/54))
 
 
 ## 4.0.1 - 2022-06-05
