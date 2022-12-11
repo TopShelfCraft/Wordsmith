@@ -93,18 +93,17 @@ class APTitleCapitalizer
 	}
 
 	/**
-	 * Splits the given string into an array of elements.
+	 * Splits the given string into an array of sentence units.
 	 *
-	 * // TODO: Make sure `splitStringIntoParts` is multi-byte safe
-	 *
-	 * @param string $string
+	 * We want to capture words and spaces as discreet tokens.
+	 * (Capturing spaces separately is important because otherwise they might mess up detection of sentence delimiters.)
 	 *
 	 * @return string[]
 	 */
 	protected function splitStringIntoParts(string $string): array
 	{
 		return preg_split(
-			"/([A-z]+[\-'’]{1}[A-z]+)|([A-z]+)/u",
+			"/([\w\'\’]+)|(\s)+/u",
 			$string,
 			null,
 			PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE
@@ -132,15 +131,15 @@ class APTitleCapitalizer
 		$isFirst = true;
 		for ($index = 0; $index < $length; $index++) {
 			$part = $parts[$index];
+			if ($this->isSentenceDelimiter($part)) {
+				$isFirst = true;
+				continue;
+			}
 			if ($this->isWordLike($part)) {
 				if ($isFirst) {
 					$parts[$index] = $this->processFirstLastWord($part);
 					$isFirst = false;
 				}
-				continue;
-			}
-			if ($this->isSentenceDelimiter($part)) {
-				$isFirst = true;
 			}
 		}
 		return $parts;
@@ -179,21 +178,19 @@ class APTitleCapitalizer
 	{
 		return $this->replacePattern(
 			$string,
-			'/\s*([,;:])\s*([A-z])/',
+			'/\s*([,;:])\s*(\w)/',
 			'$1 $2'
 		);
 	}
 
 	/**
 	 * Returns a boolean indicating whether the given string looks, walks, and
-	 * talks like a word.
-	 *
-	 * // TODO: Make `isWordLike` multi-byte safe
+	 * talks like a word: It starts with an alpha character, and contains only alpha characters and apostrophe(s).
 	 */
 	protected function isWordLike(string $string): bool
 	{
 		return (bool)preg_match(
-			"/(^[A-z]+[\-'’]{1}[A-z]+$)|(^[A-z]+$)/u",
+			"/^[[:alpha:]]+[[:alpha:]\'\’]*$/u",
 			$string
 		);
 	}
@@ -230,15 +227,18 @@ class APTitleCapitalizer
 	 */
 	protected function isSentenceDelimiter(string $string): bool
 	{
-		return $string === '.';
+		return in_array($string, [
+			'.', ',"',
+			'?', '?"',
+			'!', '!"',
+			';'
+		]);
 	}
 
 	/**
 	 * Replaces all matches of the given regular expression pattern in the
 	 * given string with the given replacement. If an error occurs, returns the
 	 * original string.
-	 *
-	 * // TODO: Make `replacePattern` multi-byte safe
 	 */
 	protected function replacePattern(string $string, string $pattern, string $replacement): string
 	{
