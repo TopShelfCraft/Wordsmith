@@ -3,6 +3,20 @@
 The format of this file is based on ["Keep a Changelog"](http://keepachangelog.com/). This project adheres to [Semantic Versioning](http://semver.org/). Version numbers follow the pattern: `MAJOR.FEATURE.BUGFIX`
 
 
+## 4.1.0 - 2022-12-10
+
+### Added
+
+- Settings can now be constructed using the fluent config style.
+- Added `protectedTitleWords` config, for words that should not be transformed when formatting titles with the `apTitleize` function.
+- `apTitleize` now leaves common known acronyms alone if they're already uppercase in the source string — e.g. "CPR", "KFC", "USA", and "YOLO!"
+
+### Changed
+
+- Renamed the `apTitleProtectedWords` config to `minorTitleWords`, indicating words that should usually be lowercased in titles when using `apTitleize`.
+- Refactored `APTitleCapitalizer` constructor to remove dependency on Wordsmith plugin for getting settings. 
+
+
 ## 4.0.1 - 2022-06-05
 
 ### Fixed

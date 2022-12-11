@@ -300,7 +300,9 @@ class WordsmithService extends Component
 	 */
 	public function apTitleize($s, $protectedWords = []): string
 	{
-		return (new APTitleCapitalizer($protectedWords))->capitalize($s);
+		$minorWords = Wordsmith::getInstance()->getSettings()->minorTitleWords;
+		$protectedWords = array_merge(Wordsmith::getInstance()->getSettings()->protectedTitleWords, $protectedWords);
+		return (new APTitleCapitalizer($protectedWords, $minorWords))->capitalize($s);
 	}
 
 	/**

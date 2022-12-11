@@ -19,7 +19,6 @@ namespace TopShelfCraft\Wordsmith\libs;
  */
 
 use Stringy\Stringy;
-use TopShelfCraft\Wordsmith\Wordsmith;
 
 /**
  * @author Michael Rog <michael@michaelrog.com>
@@ -31,24 +30,24 @@ class APTitleCapitalizer
 
 	/**
 	 * @var string[]
+	 * @todo Rename to `minorWords`
 	 */
-	protected $standardProtectedWords;
+	protected array $standardProtectedWords;
 
 	/**
 	 * @var string[]
+	 * @todo Rename to `protectedWords`
 	 */
-	protected $customProtectedWords;
+	protected array $customProtectedWords;
 
 	/**
-	 * Constructor.
-	 *
-	 * @param array $customProtectedWords
+	 * @param array $protectedWords Words that should not be transformed, no matter where they appear
+	 * @param array $minorWords Words that should be lowercase, except if they are first/last in the title
 	 */
-	public function __construct(array $customProtectedWords = [])
+	public function __construct(array $protectedWords = [], array $minorWords = [])
 	{
-		// TODO: Move the reference to Wordsmith's config out of the library to remove its dependence on Wordsmith.
-		$this->standardProtectedWords = Wordsmith::getInstance()->getSettings()->apTitleProtectedWords;
-		$this->setCustomProtectedWords($customProtectedWords);
+		$this->standardProtectedWords = $minorWords;
+		$this->setCustomProtectedWords($protectedWords);
 	}
 
 	/**
@@ -56,6 +55,7 @@ class APTitleCapitalizer
 	 * array to the "custom protected words" property.
 	 *
 	 * @param string[] $words
+	 * @todo Rename to setProtectedWords()
 	 */
 	public function setCustomProtectedWords(array $words)
 	{
