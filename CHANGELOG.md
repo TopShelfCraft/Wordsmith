@@ -14,7 +14,11 @@ The format of this file is based on ["Keep a Changelog"](http://keepachangelog.c
 ### Changed
 
 - Renamed the `apTitleProtectedWords` config to `minorTitleWords`, indicating words that should usually be lowercased in titles when using `apTitleize`.
-- Refactored `APTitleCapitalizer` constructor to remove dependency on Wordsmith plugin for getting settings. 
+- Refactored `APTitleCapitalizer` constructor to remove dependency on Wordsmith plugin for getting settings.
+
+### Fixed
+
+- Fixed a bug where `typogrify` filter would throw an error if the argument was null. This now fails silently and returns an empty string, like in Craft 3.
 
 
 ## 4.0.1 - 2022-06-05

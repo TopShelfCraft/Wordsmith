@@ -66,7 +66,7 @@ class TypographyService
 
 	}
 
-	public function typogrify(string $text, array $adhocSettings = []): string
+	public function typogrify(?string $text, array $adhocSettings = []): string
 	{
 		if (empty($text))
 		{
