@@ -27,7 +27,7 @@ Wordsmith is a blazing fast, multi-byte safe, one-stop text manipulation toolkit
 - Parse Markdown, in several flavors (including Parsedown)
 - Parse names to get their parts (e.g. first name, last name, etc.)
 - Parse a URL to get its parts (e.g. host name, path, query string, fragment, etc.)
-- Get YouTube video ID from a URL
+- Get a YouTube or Vimeo video ID from a URL
 - Match and re-case Roman numerals
 - Calculate text statistics like word count, sentence count, and readability
 - Tell whether a variable value is string-like
