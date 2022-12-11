@@ -67,13 +67,13 @@ class APTitleCapitalizer
 
 	/**
 	 * Capitalizes the given string, according to AP rules.
-	 *
-	 * @param string $string
-	 *
-	 * @return string
 	 */
-	public function capitalize($string)
+	public function capitalize(?string $string): string
 	{
+		if (empty($string))
+		{
+			return '';
+		}
 		$string = $this->normalizeInput($string);
 		$parts = $this->splitStringIntoParts($string);
 		$parts = $this->processStringParts($parts);
@@ -84,12 +84,8 @@ class APTitleCapitalizer
 
 	/**
 	 * Normalises the given string, ready for capitalisation.
-	 *
-	 * @param string $string
-	 *
-	 * @return string
 	 */
-	protected function normalizeInput($string)
+	protected function normalizeInput(string $string): string
 	{
 		$string = Stringy::create($string)->collapseWhitespace();
 		$string = $this->normalizeInputPunctuation($string->__toString());
@@ -105,7 +101,7 @@ class APTitleCapitalizer
 	 *
 	 * @return string[]
 	 */
-	protected function splitStringIntoParts($string)
+	protected function splitStringIntoParts(string $string): array
 	{
 		return preg_split(
 			"/([A-z]+[\-'’]{1}[A-z]+)|([A-z]+)/u",
@@ -117,12 +113,8 @@ class APTitleCapitalizer
 
 	/**
 	 * Processes the given array of string parts.
-	 *
-	 * @param array $parts
-	 *
-	 * @return array
 	 */
-	protected function processStringParts(array $parts)
+	protected function processStringParts(array $parts): array
 	{
 		array_walk($parts, function (&$part) {
 			$part = $this->isWordLike($part) ? $this->processWord($part) : $part;
@@ -133,12 +125,8 @@ class APTitleCapitalizer
 	/**
 	 * Processes the first words in any sentences within the given array of
 	 * parts.
-	 *
-	 * @param array $parts
-	 *
-	 * @return array
 	 */
-	protected function processFirstSentenceWordsInParts(array $parts)
+	protected function processFirstSentenceWordsInParts(array $parts): array
 	{
 		$length = count($parts);
 		$isFirst = true;
@@ -160,12 +148,8 @@ class APTitleCapitalizer
 
 	/**
 	 * Processes the last word-like item in the given array of parts.
-	 *
-	 * @param array $parts
-	 *
-	 * @return array
 	 */
-	protected function processLastWordInParts(array $parts)
+	protected function processLastWordInParts(array $parts): array
 	{
 		$parts = array_reverse($parts);
 		$length = count($parts);
@@ -181,12 +165,8 @@ class APTitleCapitalizer
 
 	/**
 	 * Converts the array of string parts back into a string.
-	 *
-	 * @param array $parts
-	 *
-	 * @return string
 	 */
-	protected function joinStringParts(array $parts)
+	protected function joinStringParts(array $parts): string
 	{
 		return implode('', $parts);
 	}
@@ -194,12 +174,8 @@ class APTitleCapitalizer
 	/**
 	 * Ensures that punctuation characters have no leading spaces, and one
 	 * trailing space.
-	 *
-	 * @param string $string
-	 *
-	 * @return string
 	 */
-	protected function normalizeInputPunctuation($string)
+	protected function normalizeInputPunctuation(string $string): string
 	{
 		return $this->replacePattern(
 			$string,
@@ -213,12 +189,8 @@ class APTitleCapitalizer
 	 * talks like a word.
 	 *
 	 * // TODO: Make `isWordLike` multi-byte safe
-	 *
-	 * @param string $string
-	 *
-	 * @return bool
 	 */
-	protected function isWordLike($string)
+	protected function isWordLike(string $string): bool
 	{
 		return (bool)preg_match(
 			"/(^[A-z]+[\-'’]{1}[A-z]+$)|(^[A-z]+$)/u",
@@ -228,12 +200,8 @@ class APTitleCapitalizer
 
 	/**
 	 * Processes the given word.
-	 *
-	 * @param string $word
-	 *
-	 * @return string
 	 */
-	protected function processWord($word)
+	protected function processWord(string $word): string
 	{
 		if ($this->isStandardProtectedWord($word)) {
 			return $this->lowercaseWord($word);
@@ -248,12 +216,8 @@ class APTitleCapitalizer
 	 * Processes the first or last word in the sentence. The first and last
 	 * word should always be capitalised, _unless_ it is a custom protected
 	 * word.
-	 *
-	 * @param string $word
-	 *
-	 * @return string
 	 */
-	protected function processFirstLastWord($word)
+	protected function processFirstLastWord(string $word): string
 	{
 		return $this->isCustomProtectedWord($word)
 			? $word
@@ -263,12 +227,8 @@ class APTitleCapitalizer
 	/**
 	 * Returns a boolean indicating whether the given string is a sentence
 	 * delimiter.
-	 *
-	 * @param string $string
-	 *
-	 * @return bool
 	 */
-	protected function isSentenceDelimiter($string)
+	protected function isSentenceDelimiter(string $string): bool
 	{
 		return $string === '.';
 	}
@@ -279,14 +239,8 @@ class APTitleCapitalizer
 	 * original string.
 	 *
 	 * // TODO: Make `replacePattern` multi-byte safe
-	 *
-	 * @param string $string
-	 * @param string $pattern
-	 * @param string $replacement
-	 *
-	 * @return string
 	 */
-	protected function replacePattern($string, $pattern, $replacement)
+	protected function replacePattern(string $string, string $pattern, string $replacement): string
 	{
 		$replaced = preg_replace($pattern, $replacement, $string);
 		return is_null($replaced) ? $string : $replaced;
@@ -295,24 +249,16 @@ class APTitleCapitalizer
 	/**
 	 * Returns a boolean indicating whether the given word is a standard
 	 * protected word, which should not be capitalised.
-	 *
-	 * @param string $word
-	 *
-	 * @return bool
 	 */
-	protected function isStandardProtectedWord($word)
+	protected function isStandardProtectedWord(string $word): bool
 	{
 		return in_array(strtolower($word), $this->standardProtectedWords);
 	}
 
 	/**
 	 * Lowercases the given word.
-	 *
-	 * @param string $word
-	 *
-	 * @return Stringy
 	 */
-	protected function lowercaseWord($word)
+	protected function lowercaseWord(string $word): Stringy
 	{
 		return Stringy::create($word)->toLowerCase();
 	}
@@ -320,24 +266,16 @@ class APTitleCapitalizer
 	/**
 	 * Returns a boolean indicating whether the given word is a custom
 	 * protected word, which should not be modified.
-	 *
-	 * @param string $word
-	 *
-	 * @return bool
 	 */
-	protected function isCustomProtectedWord($word)
+	protected function isCustomProtectedWord(string $word): bool
 	{
 		return in_array($word, $this->customProtectedWords);
 	}
 
 	/**
 	 * Capitalises the given word.
-	 *
-	 * @param string $word
-	 *
-	 * @return Stringy
 	 */
-	protected function capitalizeWord($word)
+	protected function capitalizeWord(string $word): Stringy
 	{
 		return $this->lowercaseWord($word)->upperCaseFirst();
 	}
