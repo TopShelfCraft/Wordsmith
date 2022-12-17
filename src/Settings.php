@@ -56,21 +56,6 @@ class Settings extends BaseConfig
 	public array $minorTitleWords = self::MINOR_TITLE_WORDS;
 
 	/**
-	 * @var string[] Words that should not be transformed at all when titlelizing
-	 */
-	public array $protectedTitleWords = self::PROTECTED_TITLE_WORDS;
-
-	/**
-	 * @var string Prefix for Twig function/filter names
-	 */
-	public string $twigPrefix = '';
-
-	/**
-	 * @var array Custom settings for typography functions
-	 */
-	public array $typographySettings = [];
-
-	/**
 	 * Set words that should be lowercased in AP-format titles, except when they occur in first/last position.
 	 *
 	 * ```php
@@ -84,6 +69,11 @@ class Settings extends BaseConfig
 		$this->minorTitleWords = $value;
 		return $this;
 	}
+
+	/**
+	 * @var string[] Words that should not be transformed at all when titlelizing
+	 */
+	public array $protectedTitleWords = self::PROTECTED_TITLE_WORDS;
 
 	/**
 	 * Set words that should not be transformed at all when titlelizing.
@@ -101,6 +91,11 @@ class Settings extends BaseConfig
 	}
 
 	/**
+	 * @var string Prefix for Twig function/filter names
+	 */
+	public string $twigPrefix = '';
+
+	/**
 	 * Set the prefix for Twig function/filter names.
 	 *
 	 * ```php
@@ -114,6 +109,11 @@ class Settings extends BaseConfig
 		$this->twigPrefix = $value;
 		return $this;
 	}
+
+	/**
+	 * @var array Custom settings for typography functions
+	 */
+	public array $typographySettings = [];
 
 	/**
 	 * Set custom settings for typography functions.
