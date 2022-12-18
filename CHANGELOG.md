@@ -3,6 +3,13 @@
 The format of this file is based on ["Keep a Changelog"](http://keepachangelog.com/). This project adheres to [Semantic Versioning](http://semver.org/). Version numbers follow the pattern: `MAJOR.FEATURE.BUGFIX`
 
 
+## 4.3.0 - Unreleased
+
+### Added
+
+- Added basic support for applying Wordsmith functions via the `@wordsmith` directive.
+
+
 ## 4.2.0 - 2022-12-11
 
 ### Added
