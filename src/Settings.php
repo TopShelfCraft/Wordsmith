@@ -72,6 +72,26 @@ class Settings extends BaseConfig
 	}
 
 	/**
+	 * @var string Prefix for GraphQL directive names
+	 */
+	public string $gqlPrefix = '';
+
+	/**
+	 * Set the prefix for GraphQL directive names.
+	 *
+	 * ```php
+	 * ->gqlPrefix('wordsmith_')
+	 * ```
+	 *
+	 * @defaultAlt ''
+	 */
+	public function gqlPrefix(string $value): self
+	{
+		$this->gqlPrefix = $value;
+		return $this;
+	}
+
+	/**
 	 * @var string[] Words that should be lowercased in AP-format titles, except when they occur in first/last position
 	 */
 	public array $minorTitleWords = self::MINOR_TITLE_WORDS;
