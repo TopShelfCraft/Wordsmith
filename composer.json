@@ -22,7 +22,7 @@
         }
     ],
     "require": {
-        "craftcms/cms": "^4.0",
+        "craftcms/cms": "^4.2.5",
         "davechild/textstatistics": "^1.0.3",
         "erusev/parsedown-extra": "^0.8",
         "icanboogie/inflector": "^2.0",

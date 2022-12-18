@@ -9,6 +9,10 @@ The format of this file is based on ["Keep a Changelog"](http://keepachangelog.c
 
 - Added basic support for applying Wordsmith functions via the `@wordsmith` directive.
 
+### Changed
+
+- Bumped the CraftCMS requirement to 4.2.5, to ensure support for fluent config models.
+
 
 ## 4.2.0 - 2022-12-11
 
