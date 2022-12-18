@@ -51,6 +51,27 @@ class Settings extends BaseConfig
 	];
 
 	/**
+	 * @var string[] Whether to register Wordsmith functions as GraphQL directives. You can enable/disable all functions at once, or provide an (un-prefixed) list of functions to expose.
+	 */
+	public bool|array $gqlAllowFunctions = false;
+
+	/**
+	 * Set whether to register Wordsmith functions as GraphQL directives. You can enable/disable all functions at once,
+	 * or provide an (unprefixed) list of functions to expose.
+	 *
+	 * ```php
+	 * ->gqlAllowFunctions([...])
+	 * ```
+	 *
+	 * @defaultAlt false
+	 */
+	public function gqlAllowFunctions(bool|array $value): self
+	{
+		$this->gqlAllowFunctions = $value;
+		return $this;
+	}
+
+	/**
 	 * @var string[] Words that should be lowercased in AP-format titles, except when they occur in first/last position
 	 */
 	public array $minorTitleWords = self::MINOR_TITLE_WORDS;

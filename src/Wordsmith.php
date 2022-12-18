@@ -2,8 +2,11 @@
 namespace TopShelfCraft\Wordsmith;
 
 use Craft;
+use craft\events\RegisterGqlDirectivesEvent;
+use craft\services\Gql;
 use craft\web\twig\variables\CraftVariable;
 use TopShelfCraft\base\Plugin;
+use TopShelfCraft\Wordsmith\gql\WordsmithDirective;
 use TopShelfCraft\Wordsmith\services\EmojiService;
 use TopShelfCraft\Wordsmith\services\TypographyService;
 use TopShelfCraft\Wordsmith\services\WordsmithService;
@@ -50,6 +53,15 @@ class Wordsmith extends Plugin
 				/** @var CraftVariable $variable * */
 				$variable = $event->sender;
 				$variable->set('wordsmith', Wordsmith::getInstance()->smith);
+			}
+		);
+
+		// Register GraphQL directives
+		Event::on(
+			Gql::class,
+			Gql::EVENT_REGISTER_GQL_DIRECTIVES,
+			function(RegisterGqlDirectivesEvent $event) {
+				$event->directives[] = WordsmithDirective::create();
 			}
 		);
 
