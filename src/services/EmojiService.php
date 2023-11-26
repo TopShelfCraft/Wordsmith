@@ -21,11 +21,14 @@ class EmojiService
 			$this->_emojiData = array_map(
 				function ($entry) {
 
-					$assumedName = !empty($entry->name) ? $entry->name : (string) Stringy::create($entry->short_name)->humanize()->toUpperCase();
-					$snakeName = Stringy::create($assumedName)->toLowerCase()->replace('&', 'AND')->slugify('_');
-					$constantName = (string) $snakeName->toUpperCase();
-					$camelName = (string) Stringy::create($assumedName)->toLowerCase()->camelize();
-					// TODO: I think toLowerCase is redundant before camelize...? ^^
+					$constantName = Stringy::create($entry->name ?: $entry->short_name)
+						->humanize()
+						->replace('&', 'AND')
+						->replace('*', 'STAR')
+						->slugify('_')
+						->toUpperCase();
+					$snakeName = $constantName->toLowerCase();
+					$camelName = $snakeName->camelize();
 
 					return [
 						'name' => $entry->name,
@@ -36,8 +39,8 @@ class EmojiService
 						'shortName' => $entry->short_name,
 						'shortNames' => $entry->short_names,
 						'snakeName' => (string) $snakeName,
-						'constantName' => $constantName,
-						'camelName' => $camelName,
+						'constantName' => (string) $constantName,
+						'camelName' => (string) $camelName,
 						'unicode' => constant('TopShelfCraft\Wordsmith\libs\Emoji::' . $constantName)
 					];
 				},
@@ -176,8 +179,12 @@ class EmojiService
 		$data = array_map(
 			function ($entry) {
 
-				$assumedName = !empty($entry->name) ? $entry->name : (string) Stringy::create($entry->short_name)->humanize()->toUpperCase();
-				$constantName = (string) Stringy::create($assumedName)->toLowerCase()->replace('&', 'AND')->slugify('_')->toUpperCase();
+				$constantName = (string) Stringy::create($entry->name ?: $entry->short_name)
+					->humanize()
+					->replace('&', 'AND')
+					->replace('*', 'STAR')
+					->slugify('_')
+					->toUpperCase();
 
 				$char = '';
 				foreach (explode('-', $entry->unified) as $code)

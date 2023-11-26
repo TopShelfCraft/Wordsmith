@@ -618,6 +618,7 @@ class Emoji
 	const HATCHING_CHICK = "\u{1F423}";
 	const BABY_CHICK = "\u{1F424}";
 	const FRONT_FACING_BABY_CHICK = "\u{1F425}";
+	const BLACK_BIRD = "\u{1F426}\u{200D}\u{2B1B}";
 	const BIRD = "\u{1F426}";
 	const PENGUIN = "\u{1F427}";
 	const KOALA = "\u{1F428}";
@@ -1258,6 +1259,7 @@ class Emoji
 	const HINDU_TEMPLE = "\u{1F6D5}";
 	const HUT = "\u{1F6D6}";
 	const ELEVATOR = "\u{1F6D7}";
+	const WIRELESS = "\u{1F6DC}";
 	const PLAYGROUND_SLIDE = "\u{1F6DD}";
 	const WHEEL = "\u{1F6DE}";
 	const RING_BUOY = "\u{1F6DF}";
@@ -1338,7 +1340,8 @@ class Emoji
 	const SELFIE = "\u{1F933}";
 	const PRINCE = "\u{1F934}";
 	const WOMAN_IN_TUXEDO = "\u{1F935}\u{200D}\u{2640}\u{FE0F}";
-	const MAN_IN_TUXEDO = "\u{1F935}";
+	const MAN_IN_TUXEDO = "\u{1F935}\u{200D}\u{2642}\u{FE0F}";
+	const PERSON_IN_TUXEDO = "\u{1F935}";
 	const MOTHER_CHRISTMAS = "\u{1F936}";
 	const WOMAN_SHRUGGING = "\u{1F937}\u{200D}\u{2640}\u{FE0F}";
 	const MAN_SHRUGGING = "\u{1F937}\u{200D}\u{2642}\u{FE0F}";
@@ -1610,6 +1613,9 @@ class Emoji
 	const BRIEFS = "\u{1FA72}";
 	const SHORTS = "\u{1FA73}";
 	const THONG_SANDAL = "\u{1FA74}";
+	const LIGHT_BLUE_HEART = "\u{1FA75}";
+	const GREY_HEART = "\u{1FA76}";
+	const PINK_HEART = "\u{1FA77}";
 	const DROP_OF_BLOOD = "\u{1FA78}";
 	const ADHESIVE_BANDAGE = "\u{1FA79}";
 	const STETHOSCOPE = "\u{1FA7A}";
@@ -1622,6 +1628,8 @@ class Emoji
 	const MAGIC_WAND = "\u{1FA84}";
 	const PINATA = "\u{1FA85}";
 	const NESTING_DOLLS = "\u{1FA86}";
+	const MARACAS = "\u{1FA87}";
+	const FLUTE = "\u{1FA88}";
 	const RINGED_PLANET = "\u{1FA90}";
 	const CHAIR = "\u{1FA91}";
 	const RAZOR = "\u{1FA92}";
@@ -1651,6 +1659,9 @@ class Emoji
 	const IDENTIFICATION_CARD = "\u{1FAAA}";
 	const LOW_BATTERY = "\u{1FAAB}";
 	const HAMSA = "\u{1FAAC}";
+	const FOLDING_HAND_FAN = "\u{1FAAD}";
+	const HAIR_PICK = "\u{1FAAE}";
+	const KHANDA = "\u{1FAAF}";
 	const FLY = "\u{1FAB0}";
 	const WORM = "\u{1FAB1}";
 	const BEETLE = "\u{1FAB2}";
@@ -1662,12 +1673,18 @@ class Emoji
 	const CORAL = "\u{1FAB8}";
 	const EMPTY_NEST = "\u{1FAB9}";
 	const NEST_WITH_EGGS = "\u{1FABA}";
+	const HYACINTH = "\u{1FABB}";
+	const JELLYFISH = "\u{1FABC}";
+	const WING = "\u{1FABD}";
+	const GOOSE = "\u{1FABF}";
 	const ANATOMICAL_HEART = "\u{1FAC0}";
 	const LUNGS = "\u{1FAC1}";
 	const PEOPLE_HUGGING = "\u{1FAC2}";
 	const PREGNANT_MAN = "\u{1FAC3}";
 	const PREGNANT_PERSON = "\u{1FAC4}";
 	const PERSON_WITH_CROWN = "\u{1FAC5}";
+	const MOOSE = "\u{1FACE}";
+	const DONKEY = "\u{1FACF}";
 	const BLUEBERRIES = "\u{1FAD0}";
 	const BELL_PEPPER = "\u{1FAD1}";
 	const OLIVE = "\u{1FAD2}";
@@ -1678,6 +1695,8 @@ class Emoji
 	const POURING_LIQUID = "\u{1FAD7}";
 	const BEANS = "\u{1FAD8}";
 	const JAR = "\u{1FAD9}";
+	const GINGER_ROOT = "\u{1FADA}";
+	const PEA_POD = "\u{1FADB}";
 	const MELTING_FACE = "\u{1FAE0}";
 	const SALUTING_FACE = "\u{1FAE1}";
 	const FACE_WITH_OPEN_EYES_AND_HAND_OVER_MOUTH = "\u{1FAE2}";
@@ -1686,6 +1705,7 @@ class Emoji
 	const DOTTED_LINE_FACE = "\u{1FAE5}";
 	const BITING_LIP = "\u{1FAE6}";
 	const BUBBLES = "\u{1FAE7}";
+	const SHAKING_FACE = "\u{1FAE8}";
 	const HAND_WITH_INDEX_FINGER_AND_THUMB_CROSSED = "\u{1FAF0}";
 	const RIGHTWARDS_HAND = "\u{1FAF1}";
 	const LEFTWARDS_HAND = "\u{1FAF2}";
@@ -1693,6 +1713,8 @@ class Emoji
 	const PALM_UP_HAND = "\u{1FAF4}";
 	const INDEX_POINTING_AT_THE_VIEWER = "\u{1FAF5}";
 	const HEART_HANDS = "\u{1FAF6}";
+	const LEFTWARDS_PUSHING_HAND = "\u{1FAF7}";
+	const RIGHTWARDS_PUSHING_HAND = "\u{1FAF8}";
 	const DOUBLE_EXCLAMATION_MARK = "\u{203C}\u{FE0F}";
 	const EXCLAMATION_QUESTION_MARK = "\u{2049}\u{FE0F}";
 	const TRADE_MARK_SIGN = "\u{2122}\u{FE0F}";
