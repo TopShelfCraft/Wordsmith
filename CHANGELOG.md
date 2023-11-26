@@ -3,15 +3,26 @@
 The format of this file is based on ["Keep a Changelog"](http://keepachangelog.com/). This project adheres to [Semantic Versioning](http://semver.org/). Version numbers follow the pattern: `MAJOR.FEATURE.BUGFIX`
 
 
-## 4.3.0 - Unreleased
+## Unreleased
 
 ### Added
 
 - Added basic support for applying Wordsmith functions via the `@wordsmith` directive.
 
+
+## 4.3.0 - 2023-11-25
+
+### Improved
+
+- Updated Emoji definitions to Unicode version 15 (September 2022).
+ 
 ### Changed
 
 - Bumped the CraftCMS requirement to 4.2.5, to ensure support for fluent config models.
+
+### Fixed
+
+- Fixed a missing-constant bug caused by insufficient/inconsistent emoji name normalization.
 
 
 ## 4.2.0 - 2022-12-11
