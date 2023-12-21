@@ -10,6 +10,16 @@ The format of this file is based on ["Keep a Changelog"](http://keepachangelog.c
 - Added basic support for applying Wordsmith functions via the `@wordsmith` directive.
 
 
+## 4.4.0 - 2023-12-20
+
+### Changed
+
+- Wordsmith no longer provides `md`, `markdown`, or `widont` filters when Craft is rendering a template in `cp` mode, to avoid conflicts with Craft's native filters.
+
+### System
+
+- Wordsmith now requires Craft 4.5 or greater.
+
 ## 4.3.0 - 2023-11-25
 
 ### Improved

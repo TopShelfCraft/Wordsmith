@@ -1,6 +1,8 @@
 <?php
 namespace TopShelfCraft\Wordsmith\view;
 
+use Craft;
+use craft\web\View;
 use TopShelfCraft\Wordsmith\Wordsmith;
 
 use Twig\Extension\AbstractExtension;
@@ -10,6 +12,12 @@ use Twig\TwigFunction;
 
 class WordsmithTwigExtension extends AbstractExtension implements GlobalsInterface
 {
+
+	private $_craftNativeMethods = [
+		'md',
+		'markdown',
+		'widont',
+	];
 
 	/**
 	 * Returns the name of the extension.
@@ -38,6 +46,13 @@ class WordsmithTwigExtension extends AbstractExtension implements GlobalsInterfa
 
 		foreach ($smith->getMethodList() as $method => $meta)
 		{
+			// Don't override Craft native filters when rendering CP templates.
+			if (
+				Craft::$app->view->templateMode == View::TEMPLATE_MODE_CP
+				&& in_array($method, $this->_craftNativeMethods))
+			{
+				continue;
+			}
 			$filters[] = new TwigFilter($prefix . $method, [$smith, $method], $meta);
 		}
 

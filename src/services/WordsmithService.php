@@ -675,6 +675,8 @@ class WordsmithService extends Component
 	 * @param string $flavor
 	 * @param bool $inlineOnly
 	 * @return string
+	 *
+	 * @deprecated Retiring this method in 5.x in favor of Craft's native `markdown` filter.
 	 */
 	public function markdown($s, $flavor = 'gfm', $inlineOnly = false): string
 	{
@@ -717,6 +719,8 @@ class WordsmithService extends Component
 	 * @param string $flavor
 	 * @param bool $inlineOnly
 	 * @return string
+	 *
+	 * @deprecated Retiring this method in 5.x in favor of Craft's native `md` filter.
 	 */
 	public function md($s, $flavor = 'gfm', $inlineOnly = false): string
 	{
