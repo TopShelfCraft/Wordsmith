@@ -2,7 +2,7 @@
     "name": "topshelfcraft/wordsmith",
     "description": "...because you have the best words.",
     "type": "craft-plugin",
-    "version": "4.4.0",
+    "version": "5.0.0",
     "keywords": [
         "craft",
         "cms",
@@ -22,7 +22,7 @@
         }
     ],
     "require": {
-        "craftcms/cms": "^4.5",
+        "craftcms/cms": "^4.5|^5.0",
         "davechild/textstatistics": "^1.0.3",
         "erusev/parsedown-extra": "^0.8",
         "icanboogie/inflector": "^2.0",
