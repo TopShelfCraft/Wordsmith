@@ -13,7 +13,6 @@ use TopShelfCraft\Wordsmith\libs\Hacksaw;
 use TopShelfCraft\Wordsmith\libs\RomanNumerals;
 use TopShelfCraft\Wordsmith\libs\SubStringy\SubStringy;
 use TopShelfCraft\Wordsmith\libs\Videos;
-use yii\helpers\Markdown;
 
 class WordsmithService extends Component
 {
@@ -105,32 +104,17 @@ class WordsmithService extends Component
 		'lowerCaseRoman' => [
 			'source' => 'internal', 'category' => 'roman-numerals'
 		],
-		'markdown' => [
-			'source' => 'internal', 'category' => 'markdown', 'is_safe' => ['html']
-		],
-		'md' => [
-			'source' => 'internal', 'category' => 'markdown', 'is_safe' => ['html']
-		],
 		'ordinal' => [
 			'source' => 'Inflector', 'category' => 'inflection'
 		],
 		'ordinalize' => [
 			'source' => 'Inflector', 'category' => 'inflection'
 		],
-		'parsedown' => [
-			'source' => 'internal', 'category' => 'markdown', 'is_safe' => ['html']
-		],
-		'parsedownExtra' => [
-			'source' => 'internal', 'category' => 'markdown', 'is_safe' => ['html']
-		],
 		'parseName' => [
 			'source' => 'FullNameParser', 'category' => 'names'
 		],
 		'parseUrl' => [
 			'source' => 'internal', 'category' => 'urls'
-		],
-		'pde' => [
-			'source' => 'internal', 'category' => 'markdown', 'is_safe' => ['html']
 		],
 		'pascalize' => [
 			'source' => 'Stringy', 'category' => 'casing'
@@ -666,65 +650,7 @@ class WordsmithService extends Component
 			}
 		);
 		return $result;
-	}
 
-	/**
-	 * Parses text through Markdown.
-	 *
-	 * @param $s
-	 * @param string $flavor
-	 * @param bool $inlineOnly
-	 * @return string
-	 *
-	 * @deprecated Retiring this method in 5.x in favor of Craft's native `markdown` filter.
-	 */
-	public function markdown($s, $flavor = 'gfm', $inlineOnly = false): string
-	{
-
-		// If flavor is 'extra' we're looking for Parsedown
-
-		if ($flavor == 'extra')
-		{
-
-			if ($inlineOnly)
-			{
-				return (new \ParsedownExtra())->line($s);
-			}
-			else
-			{
-				return (new \ParsedownExtra())->text($s);
-			}
-
-		}
-
-		// Otherwise, use Craft's built-in Yii-powered parser
-
-		$flavor = ($flavor == 'yii-extra' ? 'extra' : $flavor);
-
-		if ($inlineOnly)
-		{
-			return Markdown::processParagraph($s, $flavor);
-		}
-		else
-		{
-			return Markdown::process($s, $flavor);
-		}
-
-	}
-
-	/**
-	 * Alias for `markdown()`
-	 *
-	 * @param $s
-	 * @param string $flavor
-	 * @param bool $inlineOnly
-	 * @return string
-	 *
-	 * @deprecated Retiring this method in 5.x in favor of Craft's native `md` filter.
-	 */
-	public function md($s, $flavor = 'gfm', $inlineOnly = false): string
-	{
-		return $this->markdown($s, $flavor, $inlineOnly);
 	}
 
 	/**
@@ -747,30 +673,6 @@ class WordsmithService extends Component
 	public function ordinalize($num): string
 	{
 		return Inflector::get()->ordinalize($num);
-	}
-
-	/**
-	 * Alias for `markdown()` using the 'gfm' flavor.
-	 *
-	 * @param $s
-	 * @param bool $inlineOnly
-	 * @return string
-	 */
-	public function parsedown($s, $inlineOnly = false): string
-	{
-		return $this->markdown($s, 'gfm', $inlineOnly);
-	}
-
-	/**
-	 * Alias for `markdown()` using the 'extra' flavor.
-	 *
-	 * @param $s
-	 * @param bool $inlineOnly
-	 * @return string
-	 */
-	public function parsedownExtra($s, $inlineOnly = false): string
-	{
-		return $this->markdown($s, 'extra', $inlineOnly);
 	}
 
 	/**
@@ -827,18 +729,6 @@ class WordsmithService extends Component
 			'fragment' => $parts['fragment'] ?? null,
 		];
 
-	}
-
-	/**
-	 * Alias for `parsedownExtra()`
-	 *
-	 * @param $s
-	 * @param bool $inlineOnly
-	 * @return string
-	 */
-	public function pde($s, $inlineOnly = false): string
-	{
-		return $this->parsedownExtra($s, $inlineOnly);
 	}
 
 	/**

@@ -16,7 +16,7 @@ use yii\base\Event;
 /**
  * @author Michael Rog <michael@michaelrog.com>
  * @link https://topshelfcraft.com
- * @copyright Copyright 2022, Top Shelf Craft (Michael Rog)
+ * @copyright Copyright 2024, Top Shelf Craft (Michael Rog)
  *
  * @property  EmojiService $emoji
  * @property  WordsmithService $smith
@@ -61,7 +61,7 @@ class Wordsmith extends Plugin
 			Gql::class,
 			Gql::EVENT_REGISTER_GQL_DIRECTIVES,
 			function(RegisterGqlDirectivesEvent $event) {
-				$event->directives[] = WordsmithDirective::create();
+				$event->directives[] = WordsmithDirective::class;
 			}
 		);
 

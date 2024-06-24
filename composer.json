@@ -2,7 +2,7 @@
     "name": "topshelfcraft/wordsmith",
     "description": "...because you have the best words.",
     "type": "craft-plugin",
-    "version": "4.4.0",
+    "version": "5.0.0",
     "keywords": [
         "craft",
         "cms",
@@ -22,9 +22,8 @@
         }
     ],
     "require": {
-        "craftcms/cms": "^4.5",
+        "craftcms/cms": "^5.0",
         "davechild/textstatistics": "^1.0.3",
-        "erusev/parsedown-extra": "^0.8",
         "icanboogie/inflector": "^2.0",
         "mofodojodino/profanity-filter": "^1.3",
         "mundschenk-at/php-typography": "^6.0",
@@ -40,11 +39,5 @@
         "name": "Wordsmith",
         "handle": "wordsmith",
         "class": "TopShelfCraft\\Wordsmith\\Wordsmith"
-    },
-    "config": {
-        "allow-plugins": {
-            "yiisoft/yii2-composer": true,
-            "craftcms/plugin-installer": true
-        }
     }
 }

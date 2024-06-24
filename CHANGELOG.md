@@ -3,12 +3,20 @@
 The format of this file is based on ["Keep a Changelog"](http://keepachangelog.com/). This project adheres to [Semantic Versioning](http://semver.org/). Version numbers follow the pattern: `MAJOR.FEATURE.BUGFIX`
 
 
-## Unreleased
+## 5.0.0
 
 ### Added
 
-- Added basic support for applying Wordsmith functions via the `@wordsmith` directive.
+- Wordsmith is ready for Craft 5!
+- Added basic support for applying Wordsmith functions via the `@wordsmith` directive. ([#46](https://github.com/TopShelfCraft/Wordsmith/issues/46), [#58](https://github.com/TopShelfCraft/Wordsmith/issues/58))
 
+### Changed
+
+- Updated Emoji definitions to Unicode version Emoji 15.1 (September 2023).
+
+### Removed
+
+- Wordsmith no longer handles Markdown parsing, as Craft offers this functionality natively. The `md`, `markdown`, `parsedown`, `parsedownExtra`, and `pde` functions have been removed. ([#61](https://github.com/TopShelfCraft/Wordsmith/issues/61))
 
 ## 4.4.0 - 2023-12-20
 

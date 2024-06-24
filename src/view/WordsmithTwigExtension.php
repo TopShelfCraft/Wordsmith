@@ -14,8 +14,6 @@ class WordsmithTwigExtension extends AbstractExtension implements GlobalsInterfa
 {
 
 	private $_craftNativeMethods = [
-		'md',
-		'markdown',
 		'widont',
 	];
 
