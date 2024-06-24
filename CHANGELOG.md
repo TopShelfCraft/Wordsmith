@@ -3,11 +3,15 @@
 The format of this file is based on ["Keep a Changelog"](http://keepachangelog.com/). This project adheres to [Semantic Versioning](http://semver.org/). Version numbers follow the pattern: `MAJOR.FEATURE.BUGFIX`
 
 
-## Unreleased
+## 4.5.0 - 2024-06-22
 
 ### Added
 
-- Added basic support for applying Wordsmith functions via the `@wordsmith` directive.
+- Added basic support for applying Wordsmith functions via the `@wordsmith` directive. ([#46](https://github.com/TopShelfCraft/Wordsmith/issues/46), [#58](https://github.com/TopShelfCraft/Wordsmith/issues/58))
+
+### Changed
+
+- Updated Emoji definitions to Unicode version Emoji 15.1 (September 2023).
 
 
 ## 4.4.0 - 2023-12-20
@@ -16,9 +20,10 @@ The format of this file is based on ["Keep a Changelog"](http://keepachangelog.c
 
 - Wordsmith no longer provides `md`, `markdown`, or `widont` filters when Craft is rendering a template in `cp` mode, to avoid conflicts with Craft's native filters.
 
-### System
+### Security
 
 - Wordsmith now requires Craft 4.5 or greater.
+
 
 ## 4.3.0 - 2023-11-25
 

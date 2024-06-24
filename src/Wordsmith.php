@@ -61,7 +61,7 @@ class Wordsmith extends Plugin
 			Gql::class,
 			Gql::EVENT_REGISTER_GQL_DIRECTIVES,
 			function(RegisterGqlDirectivesEvent $event) {
-				$event->directives[] = WordsmithDirective::create();
+				$event->directives[] = WordsmithDirective::class;
 			}
 		);
 
