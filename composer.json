@@ -2,7 +2,7 @@
     "name": "topshelfcraft/wordsmith",
     "description": "...because you have the best words.",
     "type": "craft-plugin",
-    "version": "5.0.0",
+    "version": "5.1.0",
     "keywords": [
         "craft",
         "cms",
@@ -28,7 +28,7 @@
         "mofodojodino/profanity-filter": "^1.3",
         "mundschenk-at/php-typography": "^6.0",
         "topshelfcraft/base": "^4.0.1",
-        "voku/stringy": "^6.4.0"
+        "voku/stringy": "^7.0.1"
     },
     "autoload": {
         "psr-4": {

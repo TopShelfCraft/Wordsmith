@@ -3,6 +3,13 @@
 The format of this file is based on ["Keep a Changelog"](http://keepachangelog.com/). This project adheres to [Semantic Versioning](http://semver.org/). Version numbers follow the pattern: `MAJOR.FEATURE.BUGFIX`
 
 
+## 5.1.0 - 2026-06-06
+
+### Changed
+
+- Updated the version constraint for [Stringy](https://github.com/voku/Stringy) to fix PHP 8.1+ compatibility/deprecations. ([#63](https://github.com/TopShelfCraft/Wordsmith/issues/63)) 
+
+
 ## 5.0.0 - 2024-06-22
 
 ### Added
